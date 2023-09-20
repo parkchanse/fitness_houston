@@ -1,6 +1,6 @@
 
-import './reset.css'
-import './App.css';
+import './asset/css/reset.css'
+import './asset/css/App.css';
 
 function App() {
   return (
