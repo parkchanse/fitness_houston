@@ -24,6 +24,7 @@
 .banner_box_text01 h2{
   font-size: 2.5rem;  
   color: cornflowerblue;
+  font-weight: bold;
 }
 .banner_box_text02 h3{
   font-size: 1.3rem;
@@ -58,4 +59,5 @@
 .menu_title_box h2{
   font-size: 3rem;
   margin-bottom: 3rem;
+  font-weight: bold;
 }
