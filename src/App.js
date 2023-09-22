@@ -9,7 +9,7 @@ import Sub_Page from './Components/Sub_Page/Sub_Page'
 function App() {
   return (
     <div>
-      <Main_Page/>
+      <Common_Contents/>
     </div>
   );
 }
