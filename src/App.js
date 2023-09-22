@@ -9,6 +9,7 @@ function App() {
   return (
     <>
       <Sub_Page/>
+      <Common_Contents/>
     </>
   );
 }
