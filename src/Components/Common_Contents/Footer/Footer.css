@@ -1,0 +1,73 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.footer{
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    height: 360px;
+    position: absolute;
+    bottom: 0;
+    background-color: #f7f7f7;
+}
+
+.footer_top{
+    height: 55px;
+    border-bottom: 1px solid #efefef;
+}
+.footer_header{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer_header_text{
+    display: flex;
+    gap: 30px;
+    line-height: 55px;
+    font-size: 1rem;
+
+    /* display: none; */
+}
+.footer_header_text div{
+    cursor: pointer;
+}
+
+.footer_select{
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.footer_select_box{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid gray;
+    
+    padding: 7px;
+}
+.footer_select_box p{
+    color: gray;
+}
+.down_icon{
+    margin-left: 10px;
+}
+.footer_select_hover{
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+.footer_select_hover div{
+    border: 1px solid gray;
+    padding: 7px;
+}
+.footer_hover_1{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* margin: 0 auto;
+    left: 0;
+    right: 0; */
