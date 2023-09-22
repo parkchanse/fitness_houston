@@ -17,7 +17,6 @@ function App() {
     </div>
     <>
       <Sub_Page/>
-      <Common_Contents/>
     </>
   );
 }
