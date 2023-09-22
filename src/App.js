@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import './asset/css/reset.css'
 import './asset/css/App.css';
 import Main_Page from './Components/Main_Page/Main_Page';
@@ -8,9 +7,10 @@ import Sub_Page from './Components/Sub_Page/Sub_Page'
 
 function App() {
   return (
-    <div>
+    <>
+      <Sub_Page/>
       <Common_Contents/>
-    </div>
+    </>
   );
 }
 
