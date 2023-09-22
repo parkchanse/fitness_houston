@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import './asset/css/reset.css'
 import './asset/css/App.css';
 import Main_Page from './Components/Main_Page/Main_Page';
@@ -16,6 +15,10 @@ function App() {
       <Announcement/>
       <Footer/>
     </div>
+    <>
+      <Sub_Page/>
+      <Common_Contents/>
+    </>
   );
 }
 
