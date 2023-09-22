@@ -3,8 +3,11 @@
 }
 .goods_category{
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto; 
+  max-width: 1380px;
+  margin: 0 auto 3rem auto; 
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
 }
 .slider-container {
   display: flex;
@@ -12,8 +15,9 @@
   width: 100%; height: 8rem;
   position: relative;
   white-space: nowrap;
-  scroll-behavior: smooth; /* Add smooth scrolling */
-  scroll-snap-type: x proximity; /* Enable snap-scrolling */
+  scroll-behavior: smooth; 
+  scroll-snap-type: x mandatory; 
+  transition: 0.5s ease-in-out;
 }
 .good_category_img{
   width: 7rem; height: 7rem;
@@ -22,57 +26,87 @@
   vertical-align: top;
   position: relative;  
 }
-.asd{
+.img_text{
   position: absolute;
   top: 0; left: 0;
-  width: 7rem; height: 7rem;
-  opacity: .9;   
+  width: 7rem; height: 7rem;   
   line-height: 7rem;  
-  text-align: center;
-  display: none;  
-  color: blueviolet;
+  text-align: center; 
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0;
 }
-.asd h1{
-  font-weight: bold;
+.img_text h1{
+  font-weight: bold;  
 }
 .good_category_img .view_all{
   width: 100%; height: 100%;
+  font-weight: bold;
   text-align: center;
   line-height: 7rem;
-  background: #ddd;
-  border-radius: 50%;
-  border: 1px solid red;
+  background: lightgoldenrodyellow;
+  border-radius: 50%; 
+  color: #555; 
 }
 .good_category_img img{
   width: 100%; height: 100%;
   border-radius: 50%;  
+  z-index: -1;
 }
 
-.slide-button {
-  position: absolute;   
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 24px;
+.slide-button{   
+  position: relative;   
+  background: lightgray;
+  color: #aaa;
+  font-size: 1.5rem;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  width: 3rem; height: 3rem;
+  line-height: 3rem;  
   border-radius: 50%;
   transition: 1s;
 }
+.slide-button h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 .slide-button:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
 }
-.left {
-  left: 12%; top: 138%;
+.left{
+  left: -2rem;
 }
-.right {
-  right: 0;
+.right{
+  right: -2rem;  
 }
 
-/* .good_category_img:hover .asd{
-  opacity: .5;
-} */
+.good_category_img .view_all:hover{
+  opacity: .6;  
+  cursor: pointer;
+  color: #111;
+}
+.good_category_img:hover .img_text{  
+  opacity: 1;
+  z-index: 1;
+  transition: 0.5s;
+  color: #111;
+  cursor: pointer;;
+}
+.good_category_img:hover img{
+  opacity: .6;
+}
 
+.goods_area{
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.menu_goods{
+  width: 100%;  
+  display: flex;
+  flex-wrap: wrap;
+}
 
 
 
