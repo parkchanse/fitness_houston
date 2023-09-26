@@ -10,7 +10,7 @@ function App() {
     <>
       <Sub_Page/>
     </>
-  );
+  )
 }
 
 export default App;
