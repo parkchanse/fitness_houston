@@ -11,6 +11,12 @@
 .header_hide{
     background-color: bisque;
     height: 50px;
+    font-size: 1.2rem;
+}
+
+.header_logo a{
+    text-decoration: none;
+    color: black;
 }
 
 .hide_section div{
@@ -21,6 +27,13 @@
     height: 50px;
     line-height: 50px;
 }
+.hide_section div:hover, .hide_section a:hover{
+    color: gray;
+}
+
+.hide_section a{
+    text-decoration: none;
+    color: black;
 .hide_section div:hover{
     border-bottom: 2px solid black;
 }
@@ -50,6 +63,7 @@
     line-height: 100px;
     width: 4rem;
     text-align: center;
+    border-bottom: 5px solid transparent;
 }
 .hover_contents div:hover{
     border-bottom: 5px solid black;
