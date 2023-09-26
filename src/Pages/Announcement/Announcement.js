@@ -1,5 +1,6 @@
 import React, {useState, useRef} from "react";
 import Paging from "../../Components/Common_Contents/Paging/Paging";
+import React, {useState} from "react";
 import './Announcement.css'
 
 function Announcement(){
@@ -12,6 +13,9 @@ function Announcement(){
     const [update, setUpdate] = useState(-1)     // 수정 모달, -1은 현재 수정중이 아님을 나타냄
     const [viewContents, setViewContents] = useState([])    // 제목 클릭 시 내용 부분 보이기 / 숨기기
     const inputRef = useRef(null)
+    const [view, setView] = useState(0)             // 조회수
+    const [listitems, setListItems] = useState([])  // 작성 리스트 관리
+    const [modal, setModal] = useState(false)       // 작성 모달
 
     const today = new Date()
     const year = today.getFullYear().toString().slice(-2)
@@ -27,6 +31,10 @@ function Announcement(){
         window.scrollTo(0, 0)   // 글쓰기 버튼 클릭 시 0,0 스크롤 위치로 이동
 
         inputRef.current.focus()
+    const popupModal = () => {  // 작성 모달을 나타내주는 부분
+        setModal(true)
+        document.body.style = 'overflow: hidden'   // 글쓰기 버튼을 누르면 스크롤을 막는 부분
+        window.scrollTo(0, 0)   // 글쓰기 버튼 클릭 시 0,0 스크롤 위치로 이동
     }
     const closeModal = () => {  // 작성 모달을 사라지게 하는 부분
         setModal(false)
@@ -49,6 +57,15 @@ function Announcement(){
             alert('입력되지 않은 곳이 있습니다.')
         }else{
             setListItems([newItem, ...listitems])   // 새로운 아이템을 앞에 추가
+            author: author,
+            title: title,
+            contents: contents
+        }
+
+        if(author === '' || title === ''){
+            alert('입력되지 않은 곳이 있습니다.')
+        }else{
+            setListItems([...listitems, newItem])
             setModal(false)
             setNum(num + 1)
             setAuthor('')
@@ -111,6 +128,8 @@ function Announcement(){
             newListItems.splice(index, 1)
             setListItems(newListItems)
         }
+    const viewPlus = () => {
+        setView(view + 1)   // 제목 클릭시 조회수 증가
     }
 
     return(
@@ -145,6 +164,17 @@ function Announcement(){
                                     <button onClick={() => contents_delete(item.id)}>삭제</button>
                                 </div>
                             </td>
+                    {listitems.slice(0).reverse().map((item, index) => (    // .slice(0).reverse() : 배열 뒤집기
+                    <tbody>
+                        <tr key={index}>
+                            <td>{num - index}</td>
+                            <td className="tbody_title"><span onClick={viewPlus}>{item.title}</span></td>
+                            <td>{item.author}</td>
+                            <td>{formattedDate}</td>
+                            <td>{view}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan="5"><pre className="tbody_contents">{item.contents}</pre></td>
                         </tr>
                     </tbody>
                     ))}
@@ -160,6 +190,7 @@ function Announcement(){
                         <span>작성자</span>
                         <input type="text" placeholder="작성자를 입력해주세요."
                         value={author} onChange={(e) => setAuthor(e.target.value)} ref={inputRef} autoFocus />
+                        value={author} onChange={(e) => setAuthor(e.target.value)} />
                     </div>
                     <div className="create_title">
                         <span>제목</span>

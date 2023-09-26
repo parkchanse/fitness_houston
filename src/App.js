@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import './asset/css/reset.css'
 import './asset/css/App.css';
 import Main_Page from './Components/Main_Page/Main_Page';
@@ -23,6 +22,13 @@ function App() {
     </div>
     </BrowserRouter>
   )
+      <Announcement/>
+      <Footer/>
+    </div>
+    <>
+      <Sub_Page/>
+    </>
+  );
 }
 
 export default App;

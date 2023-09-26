@@ -39,6 +39,7 @@ function Nav({hoverHeader}){
                 <p className="header_logo">
                     <Link to="/announcement">Fitness<br/>Houston</Link>
                 </p>
+                <p>로고</p>
                 <div className="hover_contents"
                 onMouseOver={choiceDiv}>
                     <div choice="brand">브랜드</div>
@@ -71,6 +72,7 @@ function Nav({hoverHeader}){
                     <div>
                         <Link to="/announcement">공지사항</Link>
                     </div>
+                    <div>공지사항</div>
                     <div>이벤트</div>
                     <div>FAQ</div>
                     <div>고객의 소리</div>
