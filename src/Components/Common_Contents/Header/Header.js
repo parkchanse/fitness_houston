@@ -18,6 +18,7 @@ function Header() {
         onMouseOut={headerContentsHoverOut}
         >
             <div className="header_showarea">
+                <p className="header_logo">Fitness<br/>Houston</p>
                 <p>로고</p>
                 <div className="header_contents">
                     <div>브랜드</div>

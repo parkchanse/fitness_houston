@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import './Nav.css'
 
 function Nav({hoverHeader}){
@@ -35,6 +36,9 @@ function Nav({hoverHeader}){
     return(
         <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
             <div className="header_showarea">
+                <p className="header_logo">
+                    <Link to="/announcement">Fitness<br/>Houston</Link>
+                </p>
                 <p>로고</p>
                 <div className="hover_contents"
                 onMouseOver={choiceDiv}>
@@ -65,6 +69,9 @@ function Nav({hoverHeader}){
                     <div>매장위치</div>
                 </div>
                 <div className={`hide_section ${choices.notice? 'choice_show': 'display_hide'}`}>
+                    <div>
+                        <Link to="/announcement">공지사항</Link>
+                    </div>
                     <div>공지사항</div>
                     <div>이벤트</div>
                     <div>FAQ</div>
