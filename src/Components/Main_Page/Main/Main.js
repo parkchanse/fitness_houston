@@ -3,7 +3,7 @@
 import './Main.css'
 import '../../../asset/css/reset.css'
 import React, { useState, useEffect, useRef } from 'react'
-import DataSlider from '../DataSlider/DataSlider'
+import DataSlider from './DataSlider/DataSlider'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronLeft , faChevronRight} from "@fortawesome/free-solid-svg-icons"
 
