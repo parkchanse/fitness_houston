@@ -1,9 +1,10 @@
 import './Main_page.css'
+import Main from './Main/Main'
 
 function Main_Page() {
     return (
         <div className="test">
-            <h1>메인페이지 영역입니다.</h1>
+            <Main />
         </div>
     )
 }
