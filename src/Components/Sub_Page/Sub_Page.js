@@ -1,17 +1,11 @@
-import React from "react";
-import ConHead from "./Make/Head/ConHead";
-import ConBanner from "./Make/Banner/ConBanner";
-import Equipment from './Make/Equipment/Equipment'
+import './Sub_Page.css'
 
-
-function Sub(){
-  return(
-    <div className="Sub_Page">
-      <ConHead/>
-      <ConBanner/>  
-      <Equipment/>    
-    </div>
-  )
+function Sub_Page() {
+    return (
+        <div className="sub">
+            <h1>서브영역입니다.</h1>
+        </div>
+    )
 }
 
-export default Sub
+export default Sub_Page
