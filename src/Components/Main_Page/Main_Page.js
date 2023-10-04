@@ -1,12 +1,14 @@
 import './Main_page.css'
 import Main from './Main/Main'
 import Article01 from './Article01/Article01'
+import Article02 from './Article02/Article02'
 
 function Main_Page() {
     return (
-        <div className="test">
+        <div className="Wrap">
             <Main />
             <Article01 />
+            <Article02 />
         </div>
     )
 }
