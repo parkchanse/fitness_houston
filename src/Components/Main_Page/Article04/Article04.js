@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import './Article04.css'
 import Data_Article04 from './Data_Article04/Data_Article04'
 
