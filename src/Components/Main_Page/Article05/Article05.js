@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import './Article05.css'
 import Data_Article05 from './Data_Article05/Data_Article05'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -23,7 +25,12 @@ function Article05() {
                                 className='Data_Article05_li'
                             >
                                 <a href="#">
-                                    <img src={item.img[`img0${id + 1}`]} alt='박스' />
+                                    <div className='Data_Article05_ContentBox'>
+                                        <img src={item.img[`img0${id + 1}`]} alt='박스' />
+                                        <div className='Data_Article05_Title'>
+                                            <span>{item.Title}</span>
+                                        </div>
+                                    </div>
                                 </a>
                             </li>
                         })}

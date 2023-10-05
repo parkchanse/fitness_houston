@@ -36,8 +36,22 @@
     justify-content: space-around;
 }
 
-
 .Data_Article05_li img{ 
     width: 376px;
     height: 212px;
+}
+
+.Data_Article05_ContentBox {
+    position: relative;
+}
+
+.Data_Article05_Title {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 18px;
+}
+
+.Data_Article05_Title p:nth-child(1) {
+    border: 1px solid red;
 }
