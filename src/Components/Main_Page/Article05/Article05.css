@@ -15,10 +15,10 @@
 .header h1 span {
     display: inline-block;
     font-size: 28px;
-    margin-top: 8px;
+    margin-top: 10px;
     position: absolute;
     top: 15%;
-    margin-left: 10px;
+    margin-left: 13px;
 }
 
 .Article05_box{
@@ -36,8 +36,18 @@
     justify-content: space-around;
 }
 
-
 .Data_Article05_li img{ 
     width: 376px;
     height: 212px;
+}
+
+.Data_Article05_ContentBox {
+    position: relative;
+}
+
+.Data_Article05_Title {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 18px;
 }
