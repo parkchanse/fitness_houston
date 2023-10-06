@@ -1,4 +1,6 @@
 /* eslint-disable */
+
+import React, {useEffect} from 'react';
 import './asset/css/reset.css'
 import './asset/css/App.css';
 import Main_Page from './Components/Main_Page/Main_Page';
@@ -8,6 +10,7 @@ import Header from './Components/Common_Contents/Header/Header';
 import Footer from './Components/Common_Contents/Footer/Footer';
 import Announcement from './Pages/Announcement/Announcement';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollTop from './Components/Common_Contents/ScrollTop/ScrollTop';
 
 function App() {
   return (
@@ -19,16 +22,10 @@ function App() {
         <Route path="/announcement" element={<Announcement />}></Route>
       </Routes>
       <Footer/>
+      <ScrollTop />   {/* 클릭했을때 최상단으로 이동 */}
     </div>
     </BrowserRouter>
   )
-      <Announcement/>
-      <Footer/>
-    </div>
-    <>
-      <Sub_Page/>
-    </>
-  );
 }
 
 export default App;

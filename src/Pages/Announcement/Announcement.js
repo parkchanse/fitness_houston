@@ -1,6 +1,6 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
+import axios from "axios";
 import Paging from "../../Components/Common_Contents/Paging/Paging";
-import React, {useState} from "react";
 import './Announcement.css'
 
 function Announcement(){
@@ -10,19 +10,15 @@ function Announcement(){
     const [contents, setContents] = useState("")    // 내용
     const [listitems, setListItems] = useState([])  // 작성 리스트 관리
     const [modal, setModal] = useState(false)       // 작성 모달
-    const [update, setUpdate] = useState(-1)     // 수정 모달, -1은 현재 수정중이 아님을 나타냄
+    const [update, setUpdate] = useState(-1)        // 수정 모달, -1은 현재 수정중이 아님을 나타냄
     const [viewContents, setViewContents] = useState([])    // 제목 클릭 시 내용 부분 보이기 / 숨기기
+    const [announcementData, setAnnouncementData] = useState([])
+    const [currentAuthor, setCurrentAuthor] = useState("")      // 현재 선택된 공지사항의 작성자
+    const [currentTitle, setCurrentTitle] = useState("")        // 현재 선택된 공지사항의 제목
+    const [currentContent, setCurrentContent] = useState("")    // 현재 선택된 공지사항의 내용
+    const [page, setPage] = useState(1)
+    const itemsPerPage = 10 // 한 페이지당 아이템 수
     const inputRef = useRef(null)
-    const [view, setView] = useState(0)             // 조회수
-    const [listitems, setListItems] = useState([])  // 작성 리스트 관리
-    const [modal, setModal] = useState(false)       // 작성 모달
-
-    const today = new Date()
-    const year = today.getFullYear().toString().slice(-2)
-    const month = (today.getMonth() + 1).toString().padStart(2, '0')
-    const day = today.getDate().toString().padStart(2, '0')
-    const formattedDate = `${year}. ${month}. ${day}`   // 작성 날짜 표시 부분
-
 
     const popupModal = (e) => {  // 작성 모달을 나타내주는 부분
         e.preventDefault()
@@ -31,10 +27,6 @@ function Announcement(){
         window.scrollTo(0, 0)   // 글쓰기 버튼 클릭 시 0,0 스크롤 위치로 이동
 
         inputRef.current.focus()
-    const popupModal = () => {  // 작성 모달을 나타내주는 부분
-        setModal(true)
-        document.body.style = 'overflow: hidden'   // 글쓰기 버튼을 누르면 스크롤을 막는 부분
-        window.scrollTo(0, 0)   // 글쓰기 버튼 클릭 시 0,0 스크롤 위치로 이동
     }
     const closeModal = () => {  // 작성 모달을 사라지게 하는 부분
         setModal(false)
@@ -46,50 +38,69 @@ function Announcement(){
 
     const create_announcement = () => {
         const newItem = {
-            id: num,    // 각 목록에 id 부여
             author: author,
             title: title,
             contents: contents,
-            viewCount: 0
         }
 
         if(author === '' || title === '' || contents === ''){
             alert('입력되지 않은 곳이 있습니다.')
         }else{
-            setListItems([newItem, ...listitems])   // 새로운 아이템을 앞에 추가
-            author: author,
-            title: title,
-            contents: contents
-        }
-
-        if(author === '' || title === ''){
-            alert('입력되지 않은 곳이 있습니다.')
-        }else{
-            setListItems([...listitems, newItem])
-            setModal(false)
-            setNum(num + 1)
-            setAuthor('')
-            setTitle('')
-            setContents('')
-            document.body.style = 'overflow: auto'
+            axios.post("http://localhost:5000/api/announcement", newItem)
+            .then((response) => {
+                const {author, title, contents} = response.data
+                setListItems([
+                    {
+                        id: num,
+                        author: author,
+                        title: title,
+                        contents: contents,
+                    },
+                    ...listitems,
+                ])
+                setModal(false)
+                setNum(num + 1)
+                setAuthor('')
+                setTitle('')
+                setContents('')
+                document.body.style = 'overflow: auto'
+                window.location.reload()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
     }
 
-    const contents_open = (id) => {
-        const contentsState = [...viewContents] 
-        const index = listitems.findIndex(item => item.id === id)  // 인덱스를 id로 바꿔주는 부분
-        contentsState[id] = !contentsState[id]
-        setViewContents(contentsState)          // 제목 눌렀을 시 내용 부분 조절해주는 토글 부분
+    const contents_open = async(id) => {
+        setViewContents((prevState) => ({   // tbody_contents 토글
+            ...prevState,
+            [id]: !prevState[id],
+        }))
 
-        if(contentsState[id] === true){  // 제목 클릭시 조회수 증가
-            const addViews = [...listitems]
-            addViews[index].viewCount += 1
-            setListItems(addViews)
+        if(!viewContents[id]){  // tbody_contents가 false에서 true 될때만 조회수 증가
+            try{
+                const response = await axios.put(`http://localhost:5000/api/announcement/${id}`)
+                const announcementViewCount = response.data
+                const updatedAnnouncement = announcementData.map((announcement) => {
+                    if(announcement._id === announcementViewCount._id){
+                        announcement.viewCount = announcementViewCount.viewCount
+                    }
+                    return announcement
+                })
+                setAnnouncementData(updatedAnnouncement)
+            }catch(error){
+                console.log(error)
+            }
         }
     }
 
     const update_popup = (id) => {  // 수정 모달을 나타내주는 부분
         setUpdate(id)
+        const selectedAnnouncement = announcementData.find((announcement) => announcement._id === id)
+        setCurrentAuthor(selectedAnnouncement.author)
+        setCurrentTitle(selectedAnnouncement.title)
+        setCurrentContent(selectedAnnouncement.contents)
         document.body.style = 'overflow: hidden'   // 글쓰기 버튼을 누르면 스크롤을 막는 부분
     }
     const close_update_popup = () => {  // 취소 클릭시 수정 모달을 사라지게 하는 부분
@@ -99,43 +110,76 @@ function Announcement(){
         setContents('')
         document.body.style = 'overflow: auto'  // 스크롤을 다시 사용할 수 있게 하는 부분
     }
+
     const update_done = () => {
-        if(update === -1) return;
-        const index = listitems.findIndex(item => item.id === update)
-        const newListItems = [...listitems]
+        if(update === -1) return
 
-        if(author === '' || title === '' || contents === ''){
-            alert('입력되지 않은 곳이 있습니다.')
+        if(currentAuthor === "" || currentTitle === "" || currentContent === ""){
+            alert("입력되지 않은 곳이 있습니다.")
         }else{
-            newListItems[index].author = author
-            newListItems[index].title = title
-            newListItems[index].contents = contents
+            const updatedAnnouncement = {
+                author: currentAuthor,
+                title: currentTitle,
+                contents: currentContent,
+            }
 
-            setListItems(newListItems)
-            setUpdate(-1)
-            setAuthor('')
-            setTitle('')
-            setContents('')
-            document.body.style = `overflow: auto`
+            axios.put(`http://localhost:5000/api/announcement/${update}/update`, updatedAnnouncement)
+            .then((response) => {
+                const updatedAnnouncementData = response.data
+                const updatedAnnouncementList = listitems.map((item) => {
+                    if(item.id === update){
+                        return{
+                            ...item,
+                            author: updatedAnnouncementData.author,
+                            title: updatedAnnouncementData.title,
+                            contents: updatedAnnouncementData.contents,
+                        }
+                    }
+                    return item
+                })
+                setListItems(updatedAnnouncementList)
+                setUpdate(-1)
+                setCurrentAuthor('')
+                setCurrentTitle('')
+                setCurrentContent('')
+                document.body.style = 'overflow: auto' // 스크롤을 다시 사용할 수 있게 하는 부분
+                window.location.reload()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
     }
 
-    const contents_delete = (id) => {
-        const newListItems = [...listitems]
-        const index = listitems.findIndex(item => item.id === id)
-
+    const contents_delete = async(id) => {
         if(window.confirm('정말 삭제하시겠습니까?')){
-            newListItems.splice(index, 1)
-            setListItems(newListItems)
+            try{
+                await axios.delete(`http://localhost:5000/api/announcement/${id}`)
+    
+                const newListItems = listitems.filter(item => item.id !== id)
+                setListItems(newListItems)
+                window.location.reload()
+            }catch(error){
+                console.error(`공지사항 삭제 중 오류 발생 : ${error}`)
+            }
         }
-    const viewPlus = () => {
-        setView(view + 1)   // 제목 클릭시 조회수 증가
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/api/announcement")
+        .then((response) => {
+            const reversedData = response.data.reverse()    // 데이터를 역순으로 정렬
+            setAnnouncementData(reversedData)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, [])
 
     return(
         <div className="announcement">
-            <h1>피트니스 휴스턴 공지사항</h1>
-            <p>피트니스 휴스턴의 공지사항을 알려드립니다.</p>
+            <h1 className="announcement_h1">피트니스 휴스턴 공지사항</h1>
+            <p className="announcement_p">피트니스 휴스턴의 공지사항을 알려드립니다.</p>
             <div className="table_area">
                 <button className="create_btn" onClick={popupModal}>글쓰기</button>
                 <table className="announcement_list">
@@ -148,39 +192,31 @@ function Announcement(){
                             <th className="thead_view">조회</th>
                         </tr>
                     </thead>
-                    {listitems.map((item, index) => (    // .slice(0).reverse() : 배열 뒤집기
-                    <tbody key={item.id}>
-                        <tr className="contents_list">
-                            <td>{listitems.length - index}</td>
-                            <td className="tbody_title"><span className="today_title_name" onClick={() => contents_open(item.id)}>{item.title}</span></td>
-                            <td>{item.author}</td>
-                            <td>{formattedDate}</td>
-                            <td>{item.viewCount}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan="5" className={`tbody_contents ${viewContents[item.id]? 'table_show': 'hide'}`}><pre className="contents_pre">{item.contents}</pre>
-                                <div className="contents_btns">
-                                    <button onClick={() => update_popup(item.id)}>수정</button>
-                                    <button onClick={() => contents_delete(item.id)}>삭제</button>
-                                </div>
-                            </td>
-                    {listitems.slice(0).reverse().map((item, index) => (    // .slice(0).reverse() : 배열 뒤집기
-                    <tbody>
-                        <tr key={index}>
-                            <td>{num - index}</td>
-                            <td className="tbody_title"><span onClick={viewPlus}>{item.title}</span></td>
-                            <td>{item.author}</td>
-                            <td>{formattedDate}</td>
-                            <td>{view}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan="5"><pre className="tbody_contents">{item.contents}</pre></td>
-                        </tr>
-                    </tbody>
+                    {announcementData.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((announcement, index) => (
+                        <tbody key={announcement._id}>
+                            <tr className="contents_list">
+                            <td>{announcementData.length - index - (page - 1) * itemsPerPage}</td>
+                                <td className="tbody_title">
+                                    <span className="tbody_title_name" onClick={() => contents_open(announcement._id)}>{announcement.title}</span>
+                                </td>
+                                <td>{announcement.author}</td>
+                                <td>{announcement.date}</td>
+                                <td>{announcement.viewCount}</td>
+                            </tr>
+                            <tr>
+                                <td colSpan="5" className={`tbody_contents ${viewContents[announcement._id]? 'table_show': 'hide'}`}>
+                                    <pre className="contents_pre">{announcement.contents}</pre>
+                                    <div className="contents_btns">
+                                        <button className="contents_btn" onClick={() => update_popup(announcement._id)}>수정</button>
+                                        <button className="contents_btn" onClick={() => contents_delete(announcement._id)}>삭제</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
                     ))}
                 </table>
             </div>
-            <Paging></Paging>
+            <Paging page={page} count={announcementData.length} setPage={setPage} itemsPerPage={itemsPerPage} />
 
             {/* 모달 팝업 부분 */}
             <div className={`create_modal ${modal? 'show': 'hide'}`}>
@@ -190,7 +226,6 @@ function Announcement(){
                         <span>작성자</span>
                         <input type="text" placeholder="작성자를 입력해주세요."
                         value={author} onChange={(e) => setAuthor(e.target.value)} ref={inputRef} autoFocus />
-                        value={author} onChange={(e) => setAuthor(e.target.value)} />
                     </div>
                     <div className="create_title">
                         <span>제목</span>
@@ -203,8 +238,8 @@ function Announcement(){
                         value={contents} onChange={(e) => setContents(e.target.value)} />
                     </div>
                     <div className="create_btns">
-                        <button onClick={create_announcement}>완료</button>
-                        <button onClick={closeModal}>취소</button>
+                        <button className="contents_btn" onClick={create_announcement}>완료</button>
+                        <button className="contents_btn" onClick={closeModal}>취소</button>
                     </div>
                 </div>
             </div>
@@ -216,21 +251,21 @@ function Announcement(){
                     <div className="update_author">
                         <span>작성자</span>
                         <input type="text" placeholder="작성자를 입력해주세요."
-                        value={author} onChange={(e) => setAuthor(e.target.value)} ref={inputRef} autoFocus />
+                        value={currentAuthor} onChange={(e) => setCurrentAuthor(e.target.value)} ref={inputRef} autoFocus />
                     </div>
                     <div className="update_title">
                         <span>제목</span>
                         <input type="text" placeholder="제목을 입력해주세요."
-                        value={title} onChange={(e) => setTitle(e.target.value)} />
+                        value={currentTitle} onChange={(e) => setCurrentTitle(e.target.value)} />
                     </div>
                     <div className="update_contents">
                         <span>내용</span>
                         <textarea type="text" placeholder="내용을 작성해주세요."
-                        value={contents} onChange={(e) => setContents(e.target.value)} />
+                        value={currentContent} onChange={(e) => setCurrentContent(e.target.value)} />
                     </div>
                     <div className="create_btns">
-                        <button onClick={update_done}>완료</button>
-                        <button onClick={close_update_popup}>취소</button>
+                        <button className="contents_btn" onClick={update_done}>완료</button>
+                        <button className="contents_btn" onClick={close_update_popup}>취소</button>
                     </div>
                 </div>
             </div>
