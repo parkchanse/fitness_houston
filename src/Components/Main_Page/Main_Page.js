@@ -7,6 +7,7 @@ import Article04 from './Article04/Article04'
 import Article05 from './Article05/Article05'
 import Article06 from './Article06/Article06'
 import Article07 from './Article07/Article07'
+import Article08 from './Article08/Article08'
 
 function Main_Page() {
     return (
@@ -19,6 +20,7 @@ function Main_Page() {
             <Article05 />
             <Article06 />
             <Article07 />
+            <Article08 />
         </div>
     )
 }
