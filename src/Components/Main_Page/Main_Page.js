@@ -6,6 +6,7 @@ import Article03 from './Article03/Article03'
 import Article04 from './Article04/Article04'
 import Article05 from './Article05/Article05'
 import Article06 from './Article06/Article06'
+import Article07 from './Article07/Article07'
 
 function Main_Page() {
     return (
@@ -17,6 +18,7 @@ function Main_Page() {
             <Article04 />
             <Article05 />
             <Article06 />
+            <Article07 />
         </div>
     )
 }
