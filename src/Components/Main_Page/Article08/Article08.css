@@ -1,0 +1,56 @@
+
+.Article08 {
+    width: 100%;
+    height: 100%;
+    margin-top: 80px;
+}
+
+.Article08 .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Article08 .header img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.Article08 .header h1 { 
+    font-size: 34px;
+    margin-top: 4px;
+}
+
+.Article08_box {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.Article08_Container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.Article08_Ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Article08_li img {
+    width: 312px;
+    height: 312px;
+}
+
+.Article08_titlebox {
+    line-height: 24px;
+}
+
+.Article08_titlebox h4 {
+    font-size: 17px;
+}
+
+.Article08_titlebox span {
+    font-size: 14px;
+}
