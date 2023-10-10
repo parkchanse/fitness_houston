@@ -23,9 +23,18 @@
 }
 
 .Article03_Slide {
+    width: 100%;
+}
+
+.Article03_Slide_Container {
     display: flex;
     width: 200%;
     justify-content: space-around;
+}
+
+.Article03_img {
+    width: 375px;
+    height: 500px;
 }
 
 .Article03_Textbox p {
