@@ -35,14 +35,59 @@
 
 .Article04_Slider {
     margin-top: 10px;
+    position: relative;
 }
 
 
-.Aricle04_container {
+.Aricle04_Container {
     display: flex;
 }
 
 .Article04_banner img {
     width: 100vw;
     height: 300px;
+}
+
+.prev {
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    cursor: pointer;
+    color: #f7f7f7;
+    background-color: rgba(100, 100, 100, 0.6);
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+}
+
+.next {
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    cursor: pointer;
+    color: #f7f7f7;
+    background-color: rgba(100, 100, 100, 0.6);
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+}
+
+.Article04_Slider:hover .prev {
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+}
+
+.Article04_Slider:hover .next {
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
 }
