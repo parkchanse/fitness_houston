@@ -16,19 +16,20 @@ import ScrollTop from './Components/Common_Contents/ScrollTop/ScrollTop';
 function App() {
   return (
     <div>
-      <Header/>
-      <Routes>
-        {/* <Route path="/" element={<App />}></Route> */}
-        <Route path="/announcement" element={<Announcement />}></Route>
-      </Routes>
-      <Footer/>
-      <ScrollTop />   {/* 클릭했을때 최상단으로 이동 */}
+      <BrowserRouter>
+        <Header/>
+
+        <Routes>
+          <Route path="/" element={<Main_Page />} />
+          <Route path="sub" element={<Sub_Page />} />
+          <Route path="/announcement" element={<Announcement />} />
+        </Routes>
+        
+        <Footer/>
+        <ScrollTop />   {/* 클릭했을때 최상단으로 이동 */}
+      </BrowserRouter>
     </div>
-    </BrowserRouter>
   )
-      <Main_Page/>
-    </div>
-  );
 }
 
 export default App;
