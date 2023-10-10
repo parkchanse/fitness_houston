@@ -1,11 +1,7 @@
 import React from "react";
 import './Footer.css'
-import {AiOutlineDown} from 'react-icons/ai'
-import {AiOutlineUp} from 'react-icons/ai'
-import {AiOutlineRight} from 'react-icons/ai'
-import {BsHeadset} from 'react-icons/bs'
-import {BsTelephone} from 'react-icons/bs'
-import {AiOutlineLine} from 'react-icons/ai'
+import {AiOutlineDown, AiOutlineUp, AiOutlineRight, AiOutlineLine} from 'react-icons/ai'
+import {BsHeadset, BsTelephone} from 'react-icons/bs'
 
 function Footer(){
     return(
@@ -48,7 +44,7 @@ function Footer(){
                     <div className="footer_notice">
                         <div className="footer_info">
                             <p className="footer_info_big">고객센터 이용안내</p>
-                            <p className="footer_info_small">평일 09:00 - 18:00, 토요일 09:00 - 13:00</p>
+                            <p className="footer_info_small">평일 09:00 - 18:00<br/>토요일 09:00 - 13:00</p>
                             <p className="footer_info_small">(일요일, 공휴일 휴무)</p>
                         </div>
                         <div className="footer_info">
@@ -64,16 +60,16 @@ function Footer(){
                         <div className="footer_info">
                             <button className="footer_info_btn"><BsHeadset />트레이닝 빠른상담</button>
                         </div>
-                        <div className="footer_info"></div>
+                        <div className="footer_info empty"></div>
                     </div>
                     <div className="footer_text">
                         <div className="footer_text_content">
                             <div className="footer_text_info">
                                 <p>(주)피트니스 휴스턴 대표자 : AAA</p>
                                 <AiOutlineLine className="column_icon"/>
-                                <p>대전광역시 서구 대덕대로 182</p>
+                                <p>대전광역시 서구 대덕대로 XXX</p>
                                 <AiOutlineLine className="column_icon"/>
-                                <p>사업자등록번호 : 123-45-6789</p>
+                                <p>사업자등록번호 : 123-XX-6789</p>
                                 <AiOutlineLine className="column_icon"/>
                                 <p>통신판매업신고 : 1234-XXXX-5678</p>
                             </div>

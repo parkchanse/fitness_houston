@@ -4,14 +4,16 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    color: gray;
+    color: #676c75;
     font-size: 1.4rem;
     z-index: 999;
+}
 
-    /* background-color: transparent; */
-    background-color: #fff;
-
+.scroll_zero{
     background-color: transparent;
+}
+.scroll_not_zero{
+    background-color: #fff;
 }
 
 .header_showarea{
@@ -54,4 +56,30 @@
 }
 .display_hide{
     display: none;
+}
+
+
+@media (max-width: 480px) {
+    .header_showarea{
+        width: 95%;
+        font-size: 1rem;
+    }
+    .header_logo{
+        margin-right: 10px;
+    }
+    .header_contents div{
+        margin-top: 0px;
+    }
+}
+@media (max-width: 400px) {
+    .header_container{
+        height: 80px;
+    }
+    .header_showarea{
+        font-size: .7rem;
+        height: 80px;
+    }
+    .header_contents div{
+        width: 3rem;
+    }
 }
