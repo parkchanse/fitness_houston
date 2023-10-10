@@ -1,4 +1,9 @@
 import './Main_page.css'
+
+function Main_Page() {
+    return (
+        <div className="test">
+            <h1>메인페이지 영역입니다.</h1>
 import Main from './Main/Main'
 import Article01 from './Article01/Article01'
 import Article02 from './Article02/Article02'

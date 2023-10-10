@@ -37,9 +37,8 @@ function Nav({hoverHeader}){
         <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
             <div className="header_showarea">
                 <p className="header_logo">
-                    <Link to="/announcement">Fitness<br/>Houston</Link>
+                    <Link to="/">Fitness<br/>Houston</Link>
                 </p>
-                <p>로고</p>
                 <div className="hover_contents"
                 onMouseOver={choiceDiv}>
                     <div choice="brand">브랜드</div>
@@ -48,7 +47,7 @@ function Nav({hoverHeader}){
                     <div choice="notice">소식</div>
                     <div choice="pt">PT</div>
                 </div>
-                <p>추가 컨텐츠</p>
+                <p>로그인</p>
             </div>
             
             <div className={`header_hide ${navControl? 'display_show': 'display_hide'}`}
@@ -72,7 +71,6 @@ function Nav({hoverHeader}){
                     <div>
                         <Link to="/announcement">공지사항</Link>
                     </div>
-                    <div>공지사항</div>
                     <div>이벤트</div>
                     <div>FAQ</div>
                     <div>고객의 소리</div>
