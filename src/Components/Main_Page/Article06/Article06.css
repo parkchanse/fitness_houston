@@ -27,13 +27,17 @@
 }
 
 .Article06_Container {
+    position: relative;
     width: 65%;
     margin: 0 auto;
     overflow: hidden;
-    position: relative;
 }
 
 .Article06_Ul {
+    width: 100%;
+}
+
+.Article06_Slider_Container {
     width: 200%;
     display: flex;
     justify-content: space-around;
