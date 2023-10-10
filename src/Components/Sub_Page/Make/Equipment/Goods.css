@@ -1,6 +1,6 @@
 .goods_card{
   width: 16rem; height: 18rem;
-  margin: 0 2rem 2rem 0;
+  margin: 1rem;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
@@ -30,4 +30,26 @@
 .pagination button:hover{
   background: #eee;
   font-weight: bold;
+}
+
+@media screen and (max-width: 860px){
+  .goods_card{
+    width: 11rem;
+    height: 13rem;
+  }
+}
+
+@media screen and (max-width: 760px){
+  .goods_card{
+    width: 13rem;
+    height: 15rem;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .goods_card{
+    width: 20rem;
+    height: 21rem; 
+    margin-right: 0;
+  }
 }

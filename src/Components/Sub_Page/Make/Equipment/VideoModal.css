@@ -25,3 +25,21 @@
   margin: 1rem auto;
   border-radius: .5rem;  
 }
+
+@media screen and (max-width: 860px){
+  .video_modal{
+    width: 45rem; height: 30rem;
+  }
+  .video_modal_content iframe{
+    width: 600px; height: 400px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .video_modal{
+    width: 25rem; height: 20rem;
+  }
+  .video_modal_content iframe{
+    width: 300px; height: 250px;
+  }
+}

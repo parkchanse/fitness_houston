@@ -16,7 +16,7 @@
   font-size: 1.5rem;
   margin-bottom: 2rem;
   position: relative;
-  line-height: 4rem;
+  line-height: 3.5rem;
 }
 .banner_box_text01 p{
   margin-bottom: 1rem; 
@@ -36,7 +36,7 @@
 }
 .banner_box_text02 p{
   color: #666;
-  line-height: 2rem;
+  line-height: 1.5rem;
 }
 .banner_box_img{
   width: 50%;
@@ -62,4 +62,84 @@
   font-size: 3rem;
   margin-bottom: 3rem;
   font-weight: bold;
+}
+
+
+@media screen and (max-width: 1280px){
+  .banner_box{
+    padding: 60px;
+  }
+  .menu_title_box h3{
+    font-size: 1rem;
+  }
+  .menu_title_box h2{
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .banner_box_img{
+    height: 25rem;
+  }
+  .banner_box_text{
+    margin: 4rem 2rem;
+  }
+  .banner_box_text01{
+    font-size: 1.2rem;    
+    line-height: 2.5rem;
+  }
+  .banner_box_text01 p{
+    margin-bottom: 0rem;     
+  }
+  .banner_box_text01 h2{
+    font-size: 2rem; 
+  }
+  .banner_box_text02 h3{
+    font-size: 1rem;     
+  }
+  .banner_box_text02 p{    
+    font-size: .9rem;
+  }
+}
+
+@media screen and (max-width: 760px){
+  .banner_box{
+    padding: 50px 20px;
+    flex-direction: column;
+  }
+  .banner_box_text{
+    width: 100%;
+    margin: 1rem;
+  }
+  .banner_box_img{
+    width: 100%;
+    height: 40rem;
+  }
+  .menu_title_box h3{
+    font-size: .8rem;
+  }
+  .menu_title_box h2{
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px){    
+  .banner_box{
+    margin: 0 auto 2rem auto;
+  }
+  .banner_box_img{
+    height: 25rem;
+  }
+  .menu_title{
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 360px){      
+  .banner_box_img{
+    height: 20rem;
+  }
+  .banner_box_text01 p{
+    font-size: 1rem;     
+  }
 }
