@@ -19,18 +19,16 @@
     color: black;
 }
 
+.hide_section{
+    border-top: 1px solid #efefef;
+    /* border-bottom: 1px solid #efefef; */
+}
 .hide_section div{
     cursor: pointer;
-
-    /* Nav 글자 밑이 아닌 박스 밑의 밑줄 */
-    width: 6.5rem;
-    height: 50px;
-    line-height: 50px;
 }
 .hide_section div:hover, .hide_section a:hover{
     color: #676c75;
 }
-
 .hide_section a{
     text-decoration: none;
     color: black;
@@ -38,17 +36,13 @@
 
 .choice_show{
     display: block;
-
-    border-top: 1px solid #efefef;
-    border-bottom: 1px solid #efefef;
     height: 100%;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
 
-    /* Nav 글자 밑 밑줄 */
-    /* gap: 50px; */
+    gap: 35px;
 }
 
 .hover_contents{
@@ -56,13 +50,20 @@
     cursor: pointer;
     height: 100px;
     align-items: center;
+    /* gap: 25px; */
 }
 .hover_contents div{
+    width: 4rem;
     height: 100px;
     line-height: 100px;
-    width: 4rem;
     text-align: center;
     border-bottom: 5px solid transparent;
+}
+.hover_contents div:nth-child(1){
+    width: 4.5rem;
+}
+.hover_contents div:nth-last-child(1){
+    width: 3rem;
 }
 .hover_contents div:hover{
     border-bottom: 5px solid black;
