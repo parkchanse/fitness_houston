@@ -18,11 +18,13 @@ function App() {
     <div>
       <BrowserRouter>
         <Header/>
+
         <Routes>
-          {/* <Route path="/" element={<App />}></Route> */}
-          <Route path="/announcement" element={<Announcement />}></Route>
+          <Route path="/" element={<Main_Page />} />
+          <Route path="sub" element={<Sub_Page />} />
+          <Route path="/announcement" element={<Announcement />} />
         </Routes>
-        <Main_Page />
+        
         <Footer/>
         <ScrollTop />   {/* 클릭했을때 최상단으로 이동 */}
       </BrowserRouter>
