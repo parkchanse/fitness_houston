@@ -1,46 +1,44 @@
-/* eslint-disable */
-
-import './Main.css'
-import React, { useRef, useState, useEffect } from 'react'
-import DataSlider from './DataSlider/DataSlider'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import React, { useRef, useState, useEffect } from 'react';
+import DataSlider from './DataSlider/DataSlider';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 function Main() {
-  const slideRef = useRef(null)
-  const [current, setCurrent] = useState(0)
-  const imgWidth = 100
-  const slideRange = current * imgWidth
+  const slideRef = useRef(null);
+  const [current, setCurrent] = useState(0);
+  const imgWidth = 100;
+  const slideRange = current * imgWidth;
 
   useEffect(() => {
-    slideRef.current.style.transition = "transform 0.5s ease-in-out"
-    slideRef.current.style.transform = `translateX(-${slideRange}%)`
+    slideRef.current.style.transition = "transform 0.5s ease-in-out";
+    slideRef.current.style.transform = `translateX(-${slideRange}%)`;
 
+    // 3초마다 다음 슬라이드로 이동하는 타이머 설정
     const timer = setInterval(() => {
-      next()
-    }, 10000)
+      next();
+    }, 3000); // 3초
 
+    // 컴포넌트가 언마운트될 때 타이머 정리
     return () => {
-      clearInterval(timer)
-    }
-
-  }, [current, slideRange])
+      clearInterval(timer);
+    };
+  }, [current, slideRange]);
 
   const prev = () => {
     if (current === 0) {
-      setCurrent(DataSlider.length - 1)
+      setCurrent(DataSlider.length - 1);
     } else {
-      setCurrent(current - 1)
+      setCurrent(current - 1);
     }
   };
 
   const next = () => {
     if (current === DataSlider.length - 1) {
-      setCurrent(0)
+      setCurrent(0);
     } else {
-      setCurrent(current + 1)
+      setCurrent(current + 1);
     }
-  }
+  };
 
   return (
     <div className='Main'>

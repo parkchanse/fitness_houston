@@ -54,7 +54,6 @@ body {
 .Textbox_Container {
     width: 70%;
     margin: 0 auto;
-    line-height: 90px;
 }
 
 .Textbox_Point {
@@ -65,14 +64,18 @@ body {
     font-size: 28px;
     width: 55%;
     line-height: 40px;
+    margin-top: 40px;
 }
 
 .Textbox_Text {
     font-size: 20px;
+    line-height: 30px;
+    margin-top: 40px;
 }
 
 .Textbox_Sub {
     font-size: 20px;
+    margin-top: 40px;
 }
 
 .prev_L {

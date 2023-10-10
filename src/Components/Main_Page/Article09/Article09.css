@@ -28,11 +28,14 @@
 
 .Article09_Video {
     width: 100%;
+    height: 100%;
     margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .Article09_Container {
     width: 65%;
+    height: auto;
     margin: 0 auto;
     position: relative;
 }
