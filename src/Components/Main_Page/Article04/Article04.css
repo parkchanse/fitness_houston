@@ -1,0 +1,48 @@
+
+/* 헤더영역 */
+
+.Article04 {
+    width: 100%;
+    height: 400px;
+    margin-top: 80px;
+}
+
+.Article04 .header {
+    width: 80%;
+    height: 85px;
+    margin: 0 auto;
+}
+
+.Article04 .header h1 {
+     font-size: 40px;
+     font-weight: 500;
+     position: relative;
+     line-height: 85px;
+}
+
+.Article04 .header h1::after {
+    content: '';
+    position: absolute;
+    top: 58%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #0064ff;
+    margin-left: 5px;
+}
+
+/* 슬라이드 영역 */
+
+.Article04_Slider {
+    margin-top: 10px;
+}
+
+
+.Aricle04_container {
+    display: flex;
+}
+
+.Article04_banner img {
+    width: 100vw;
+    height: 300px;
+}

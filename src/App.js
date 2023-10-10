@@ -12,9 +12,9 @@ import Announcement from './Pages/Announcement/Announcement';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollTop from './Components/Common_Contents/ScrollTop/ScrollTop';
 
+
 function App() {
   return (
-    <BrowserRouter>
     <div>
       <Header/>
       <Routes>
@@ -26,6 +26,9 @@ function App() {
     </div>
     </BrowserRouter>
   )
+      <Main_Page/>
+    </div>
+  );
 }
 
 export default App;
