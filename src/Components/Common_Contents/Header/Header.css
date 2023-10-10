@@ -4,9 +4,16 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    color: gray;
+    color: #676c75;
+    font-size: 1.4rem;
+    z-index: 999;
+}
 
+.scroll_zero{
     background-color: transparent;
+}
+.scroll_not_zero{
+    background-color: #fff;
 }
 
 .header_showarea{
@@ -31,6 +38,7 @@
 .header_contents div{
     width: 4rem;
     text-align: center;
+    margin-top: -3px;
 }
 .header_contents div:hover{
     border-bottom: 1px solid black;
@@ -48,4 +56,30 @@
 }
 .display_hide{
     display: none;
+}
+
+
+@media (max-width: 480px) {
+    .header_showarea{
+        width: 95%;
+        font-size: 1rem;
+    }
+    .header_logo{
+        margin-right: 10px;
+    }
+    .header_contents div{
+        margin-top: 0px;
+    }
+}
+@media (max-width: 400px) {
+    .header_container{
+        height: 80px;
+    }
+    .header_showarea{
+        font-size: .7rem;
+        height: 80px;
+    }
+    .header_contents div{
+        width: 3rem;
+    }
 }

@@ -1,0 +1,92 @@
+.Article06 {
+    width: 100%;
+    height: auto;
+    margin-top: 80px;
+}
+
+.Article06 h1 {
+    font-size: 28px;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    margin-top: 50px;
+}
+
+.Article06 h1 span {
+    display: inline-block;
+    font-size: 28px;
+    margin-top: 10px;
+    position: absolute;
+    top: 15%;
+    margin-left: 13px;
+}
+
+.Article06_Content {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.Article06_Container {
+    position: relative;
+    width: 65%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.Article06_Ul {
+    width: 100%;
+}
+
+.Article06_Slider_Container {
+    width: 200%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Article06_img img {
+    width: 400px;
+    height: 420px;
+}
+
+.Article06_img p {
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.A6_Left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 32px;
+    background-color: rgba(100, 100, 100, 0.6);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    border-radius: 10px;
+}
+
+.A6_Right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 32px;
+    background-color: rgba(100, 100, 100, 0.6);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    border-radius: 10px;
+}
+
+.Article06_Container:hover .A6_Left {
+    opacity: 1;
+    transition: 0.6s ease-in-out;
+}
+
+.Article06_Container:hover .A6_Right {
+    opacity: 1;
+    transition: 0.6s ease-in-out;
+}

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import './Nav.css'
 
 function Nav({hoverHeader}){
@@ -35,7 +36,9 @@ function Nav({hoverHeader}){
     return(
         <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
             <div className="header_showarea">
-                <p>로고</p>
+                <p className="header_logo">
+                    <Link to="/">Fitness<br/>Houston</Link>
+                </p>
                 <div className="hover_contents"
                 onMouseOver={choiceDiv}>
                     <div choice="brand">브랜드</div>
@@ -44,7 +47,7 @@ function Nav({hoverHeader}){
                     <div choice="notice">소식</div>
                     <div choice="pt">PT</div>
                 </div>
-                <p>추가 컨텐츠</p>
+                <p>로그인</p>
             </div>
             
             <div className={`header_hide ${navControl? 'display_show': 'display_hide'}`}
@@ -65,7 +68,9 @@ function Nav({hoverHeader}){
                     <div>매장위치</div>
                 </div>
                 <div className={`hide_section ${choices.notice? 'choice_show': 'display_hide'}`}>
-                    <div>공지사항</div>
+                    <div>
+                        <Link to="/announcement">공지사항</Link>
+                    </div>
                     <div>이벤트</div>
                     <div>FAQ</div>
                     <div>고객의 소리</div>

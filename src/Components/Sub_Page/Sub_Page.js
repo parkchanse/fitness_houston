@@ -1,3 +1,4 @@
+
 import React from "react";
 import './Sub_Page.css'
 // import ConHead from "./Make/Head/ConHead";
@@ -15,6 +16,5 @@ function Sub(){
       <Login/>
     </div>
   )
-}
 
-export default Sub
+export default Sub_Page
