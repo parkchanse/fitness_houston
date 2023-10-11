@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import './Nav.css'
+// import { SlLogin } from "react-icons/sl";
+import { BiSolidUser } from "react-icons/bi";
 
 function Nav({hoverHeader}){
     // eslint-disable-next-line
@@ -53,7 +55,12 @@ function Nav({hoverHeader}){
                     <div choice="notice">소식</div>
                     <div choice="pt">PT</div>
                 </div>
-                <p>로그인</p>
+                <Link to="/login">
+                    <div className="header_login">
+                        <BiSolidUser className="header_login_logo"/>
+                        <p>로그인</p>
+                    </div>
+                </Link>
             </div>
             
             <div className={`header_hide ${navControl? 'display_show': 'display_hide'}`}

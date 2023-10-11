@@ -9,7 +9,7 @@ const router = require('./server/routes/Announcements')
 app.use(cors())
 app.use(express.json())
 
-const port = 5000
+const port = 5500
 
 // MongoDB 연결
 mongoose.connect('mongodb+srv://fitness:houston@cluster0.mbn4mzj.mongodb.net/?retryWrites=true&w=majority', {
