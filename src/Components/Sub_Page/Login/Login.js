@@ -50,7 +50,8 @@ function Login(){
           console.log('로그인 성공')
           setUserId('')
           setPassword('')
-          setLoginError('')
+          setLoginError('')  
+          window.location.href = '../../Main_Page/Main/Main.js'         
         }else if(response.data.code === 400){
           console.log('로그인 실패')
           setLoginError('아이디나 비밀번호를 다시확인 하세요.')

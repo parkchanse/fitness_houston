@@ -29,7 +29,7 @@ router.post('/register', async (req, res, next) => {
     // 이메일 존재여부 확인
     const existingEmail = await User.findOne({ email });
     if (existingEmail) {
-      return res.json({ ...CLIENT_ERROR, message: '이미 사용 중인 이메일입니다.' });
+      return res.status(400).json({ ...CLIENT_ERROR, message: '이미 사용 중인 이메일입니다.' });
     }
   
     const nameRegex = /^[가-힣a-zA-Z]+$/ // 이름 유효성검사

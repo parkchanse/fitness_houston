@@ -14,7 +14,7 @@ const corsOptions = {
     credentials: true
 }
 
-mongoose.connect(`mongodb://127.0.0.1:27017/woody`)
+mongoose.connect('mongodb+srv://woody:vhrvnd17@woody.uugxmbw.mongodb.net/?retryWrites=true&w=majority')
     .then(() => console.log('몽고DB 연결완료!'))
     .catch(e => {
         console.log(`몽고DB 연결 실패: ${e}`)

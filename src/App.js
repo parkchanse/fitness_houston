@@ -11,23 +11,27 @@ import Footer from './Components/Common_Contents/Footer/Footer';
 import Announcement from './Pages/Announcement/Announcement';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollTop from './Components/Common_Contents/ScrollTop/ScrollTop';
+import Login from './Components/Sub_Page/Login/Login';
 
 
 function App() {
   return (
+    <div>
       <BrowserRouter>
-        <div>
-          <Header/>
-          <Routes>
-            {/* <Route path="/" element={<App />}></Route> */}
-            <Route path="/announcement" element={<Announcement />}></Route>
-          </Routes>
-          <Main_Page />
-          <Footer/>
-          <ScrollTop />   {/* 클릭했을때 최상단으로 이동 */}
-        </div>
-      </BrowserRouter>
+        <Header/>
 
+        <Routes>
+          <Route path="/" element={<Main_Page />} />
+          <Route path="sub" element={<Sub_Page />} />
+          <Route path="/announcement" element={<Announcement />} />
+        </Routes>
+        
+        <Footer/>
+        <ScrollTop /> 
+        {/* <Login /> */}
+        {/* 클릭했을때 최상단으로 이동 */}
+      </BrowserRouter>
+    </div>
   )
 }
 

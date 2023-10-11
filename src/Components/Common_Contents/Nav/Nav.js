@@ -32,10 +32,16 @@ function Nav({hoverHeader}){
         setNavControl(true)
     }
 
+    const changePage = () => {  // 라우터로 페이지가 변경되면 화면 최상단으로 이동
+        window.scrollTo({
+            top: 0,
+            left: 0,
+        })
+    }
     
     return(
         <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
-            <div className="header_showarea">
+            <div onClick={changePage} className="header_showarea">
                 <p className="header_logo">
                     <Link to="/">Fitness<br/>Houston</Link>
                 </p>
@@ -60,20 +66,30 @@ function Nav({hoverHeader}){
                     <div>오시는 길</div>
                 </div>
                 <div className={`hide_section ${choices.machine? 'choice_show': 'display_hide'}`}>
-                    <div>상체</div>
-                    <div>하체</div>
+                    <div>
+                        <Link to="/sub">상체</Link>
+                    </div>
+                    <div>
+                        <Link to="/sub">하체</Link>
+                    </div>
                 </div>
                 <div className={`hide_section ${choices.shop? 'choice_show': 'display_hide'}`}>
                     <div>매장찾기</div>
                     <div>매장위치</div>
                 </div>
                 <div className={`hide_section ${choices.notice? 'choice_show': 'display_hide'}`}>
-                    <div>
+                    <div onClick={changePage}>
                         <Link to="/announcement">공지사항</Link>
                     </div>
-                    <div>이벤트</div>
-                    <div>FAQ</div>
-                    <div>고객의 소리</div>
+                    <div onClick={changePage}>
+                        <Link to="/announcement">이벤트</Link>
+                    </div>
+                    <div onClick={changePage}>
+                        <Link to="/announcement">FAQ</Link>
+                    </div>
+                    <div onClick={changePage}>
+                        <Link to="/announcement">고객의 소리</Link>
+                    </div>
                 </div>
                 <div className={`hide_section ${choices.pt? 'choice_show': 'display_hide'}`}>
                     <div>상담안내</div>
