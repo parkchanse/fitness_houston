@@ -26,6 +26,7 @@
   border-radius: .3rem;  
   border: 1px solid lightgray;
   background: white;
+  cursor: pointer;
 }
 .pagination button:hover{
   background: #eee;

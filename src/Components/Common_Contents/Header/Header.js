@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import './Header.css'
 import Nav from "../Nav/Nav";
+import ScrollTop from "../ScrollTop/ScrollTop";
+// import { SlLogin } from "react-icons/sl";
+import { BiSolidUser } from "react-icons/bi";
 
 function Header() {
     const [hoverHeader, setHoverHeader] = useState(false)   // 기능 없는 헤더와 Nav와 연결된 기능이 있는 헤더를 구분하게 해주는 곳
@@ -39,9 +42,13 @@ function Header() {
                     <div>소식</div>
                     <div>PT</div>
                 </div>
-                <p>로그인</p>
+                <div className="header_login">
+                    <BiSolidUser className="header_login_logo"/>
+                    <p>로그인</p>
+                </div>
             </div>
             <Nav hoverHeader={hoverHeader}></Nav>
+            <ScrollTop />
         </div>
     )
 }
