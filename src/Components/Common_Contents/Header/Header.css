@@ -69,6 +69,16 @@
     display: none;
 }
 
+.header_login{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 1rem;
+}
+.header_login_logo{
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
 
 @media (max-width: 480px) {
     .header_showarea{

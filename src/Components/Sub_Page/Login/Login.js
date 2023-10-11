@@ -4,6 +4,7 @@ import Register from "./Info/Register"
 import SearchID from './Info/SearchID'
 import SearchPW from './Info/SearchPW'
 import axios from 'axios'
+import { Link } from "react-router-dom";
 
 function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
@@ -73,9 +74,7 @@ function Login(){
     <div className="login">
       <div className="login_container">
         <div className="login_title">
-          <a href="http://localhost:3000/">
-            <h1>Fitness Houston</h1>
-          </a>
+          <Link to="/"><h1>Fitness Houston</h1></Link>
         </div>
         <div className="login_form">
           <div className="login_form_box">

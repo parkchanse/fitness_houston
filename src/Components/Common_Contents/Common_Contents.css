@@ -8,16 +8,12 @@
     /* 원스토어 모바일POP체 */
 }
 
-.common{
+/* .common{
     width: 100%;
     font-family: 'yg-jalnan';
     font-size: 1.2rem;
-}
+} */
 
 .header_logo{
     font-family: 'ONE-Mobile-POP';
-}
-
-.common {
-    color: skyblue;
 }

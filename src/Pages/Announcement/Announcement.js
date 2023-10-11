@@ -46,7 +46,7 @@ function Announcement(){
             alert('입력되지 않은 곳이 있습니다.')
             contentsFocus.current.focus()
         }else{
-            axios.post("http://localhost:5000/api/announcement", newItem)
+            axios.post("http://localhost:5500/api/announcement", newItem)
             .then((response) => {
                 const {author, title, contents} = response.data
                 setListItems([
@@ -75,7 +75,7 @@ function Announcement(){
 
         if(!viewContents[id]){  // tbody_contents가 false에서 true 될때만 조회수 증가
             try{
-                const response = await axios.put(`http://localhost:5000/api/announcement/${id}`)
+                const response = await axios.put(`http://localhost:5500/api/announcement/${id}`)
                 const announcementViewCount = response.data
                 const updatedAnnouncementData = announcementData.map((announcement) => {
                     if(announcement._id === announcementViewCount._id){
@@ -118,7 +118,7 @@ function Announcement(){
                 contents: currentContent,
             }
 
-            axios.put(`http://localhost:5000/api/announcement/${update}/update`, updatedAnnouncement)
+            axios.put(`http://localhost:5500/api/announcement/${update}/update`, updatedAnnouncement)
             .then((response) => {
                 const updatedAnnouncementData = response.data
                 const updatedAnnouncementList = listitems.map((item) => {
@@ -149,7 +149,7 @@ function Announcement(){
     const deleteAnnouncement = async(id) => {
         if(window.confirm('정말 삭제하시겠습니까?')){
             try{
-                await axios.delete(`http://localhost:5000/api/announcement/${id}`)
+                await axios.delete(`http://localhost:5500/api/announcement/${id}`)
     
                 const newListItems = listitems.filter(item => item.id !== id)
                 setListItems(newListItems)
@@ -161,7 +161,7 @@ function Announcement(){
     }
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/announcement")
+        axios.get("http://localhost:5500/api/announcement")
         .then((response) => {
             const reversedData = response.data.reverse()    // 데이터를 역순으로 정렬
             setAnnouncementData(reversedData)
