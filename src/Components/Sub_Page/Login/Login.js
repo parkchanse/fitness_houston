@@ -4,6 +4,7 @@ import Register from "./Info/Register"
 import SearchID from './Info/SearchID'
 import SearchPW from './Info/SearchPW'
 import axios from 'axios'
+import { Link } from "react-router-dom";
 
 function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
@@ -50,7 +51,8 @@ function Login(){
           console.log('로그인 성공')
           setUserId('')
           setPassword('')
-          setLoginError('')
+          setLoginError('')  
+          window.location.href = '../../Main_Page/Main/Main.js'         
         }else if(response.data.code === 400){
           console.log('로그인 실패')
           setLoginError('아이디나 비밀번호를 다시확인 하세요.')
@@ -73,9 +75,7 @@ function Login(){
     <div className="login">
       <div className="login_container">
         <div className="login_title">
-          <a href="http://localhost:3000/">
-            <h1>Fitness Houston</h1>
-          </a>
+          <Link to="/"><h1>Fitness Houston</h1></Link>
         </div>
         <div className="login_form">
           <div className="login_form_box">

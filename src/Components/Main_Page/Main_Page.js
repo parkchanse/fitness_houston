@@ -9,10 +9,14 @@ import Article06 from './Article06/Article06'
 import Article07 from './Article07/Article07'
 import Article08 from './Article08/Article08'
 import Article09 from './Article09/Article09'
+import Header from '../Common_Contents/Header/Header'
+import Footer from '../Common_Contents/Footer/Footer'
 
 function Main_Page() {
     return (
         <div className="Wrap">
+            <Header />
+            
             <Main />
             <Article01 />
             <Article02 />
@@ -23,6 +27,8 @@ function Main_Page() {
             <Article07 />
             <Article08 />
             <Article09 />
+
+            <Footer />
         </div>
     )
 }
