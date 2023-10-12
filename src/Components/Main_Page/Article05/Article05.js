@@ -11,7 +11,7 @@ function Article05() {
             <a href="#">
               <div className='header'>
                 <h1>
-                    짐박스 매장 찾기
+                    피트니스 휴스턴 매장 찾기
                     <span><FontAwesomeIcon icon={faChevronRight}/></span>
                 </h1>
                 

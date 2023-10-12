@@ -5,6 +5,8 @@
   font-style: normal;
 }
 
+
 body{
-  font-family: 'MICEGothic Bold';  
+  font-family: 'MICEGothic Bold';
+  position: relative;
 }

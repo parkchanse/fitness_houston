@@ -1,9 +1,14 @@
+import Announcement from '../../Pages/Announcement/Announcement'
 import './Common_Contents.css'
+import Footer from './Footer/Footer'
+import Header from './Header/Header'
 
 function Common_Contents() {
     return (
-        <div className="common">
-            <h1>공통 영역입니다.</h1>
+        <div className='common'>
+            <Header />
+            <Announcement />
+            <Footer />
         </div>
     )
 }

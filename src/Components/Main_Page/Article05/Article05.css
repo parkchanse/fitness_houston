@@ -51,3 +51,47 @@
     left: 5%;
     font-size: 18px;
 }
+
+/* 반응형 웹 */
+
+@media (max-width: 1740px) {
+    .Article05_Ul {
+        width: 90%;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 1270px) {
+    .Article05_Ul {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 1140px) {
+    .Article05_Ul {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .Data_Article05_li {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 390px) {
+    .Article05 .header h1 {
+        font-size: 24px;
+    }
+
+    .header h1 span {
+        font-size: 24px;
+    }
+
+    .Data_Article05_li img{ 
+        width: 320px;
+    }
+}

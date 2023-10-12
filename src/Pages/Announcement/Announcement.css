@@ -1,16 +1,16 @@
 .announcement{
     width: 100%;
-    height: 200vh;
-    height: 100vh;
+    height: 300%;
+    /* margin-bottom: 500px; */
     position: relative;
     top: 200px;
 }
-.announcement h1{
+.announcement_h1{
     text-align: center;
     font-size: 2rem;
     margin-bottom: 30px;
 }
-.announcement p{
+.announcement_p{
     text-align: center;
     font-size: .8rem;
     margin-bottom: 70px;
@@ -29,7 +29,7 @@
     cursor: pointer;
     float: right;
 }
-.create_btn:hover{
+.create_btn:hover, .contents_btn:hover{
     background-color: #efefef;
 }
 
@@ -56,16 +56,15 @@
     text-align: center;
 }
 .contents_list:hover{
-.announcement_list tbody tr:hover{
     background-color: #efefef
 }
 .tbody_title{
     text-align: left;
-    cursor: pointer;
 }
 .tbody_title span:hover{
     border-bottom: 1px solid rgba(0,0,0,0.5);
-.today_title_name{
+}
+.tbody_title_name{
     cursor: pointer;
 }
 .announcement_list tbody td{
@@ -78,7 +77,6 @@
 }
 
 .create_modal, .update_modal{
-.create_modal{
     position: fixed;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
@@ -90,8 +88,9 @@
     border: 1px solid black;
 }
 .create_modal h1, .update_modal h1{
-.create_modal h1{
     margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .create_modal_contents{
@@ -116,11 +115,6 @@
     flex-direction: column;
 }
 .create_author, .update_author{
-.create_title{
-    display: flex;
-    flex-direction: column;
-}
-.create_author{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -130,18 +124,17 @@
     flex-direction: column;
 }
 .create_contents textarea, .update_contents textarea{
-.create_contents{
-    display: flex;
-    flex-direction: column;
-}
-.create_contents textarea{
     height: 300px;
 }
 .create_btns{
     display: flex;
     gap: 5px;
 }
-.create_btns button{
+.contents_btn{
+    background-color: #fff;
+    border: 1px solid gray;
+    color: #333;
+    margin-bottom: 5px;
     cursor: pointer;
 }
 
@@ -169,8 +162,6 @@
 .contents_btns button{
     margin-top: 20px;
     cursor: pointer;
-    /* width: 100%; */
-    text-align: center;
 }
 
 .show{
@@ -178,4 +169,73 @@
 }
 .hide{
     display: none;
+}
+
+
+@media (max-width: 1024px) {
+    .announcement_list{
+        font-size: .9rem;
+    }
+}
+@media (max-width: 780px) {
+    .announcement_list{
+        font-size: .9rem;
+    }
+    .announcement_h1{
+        font-size: 1.5rem;
+    }   
+    .announcement_p{
+        font-size: .6rem;
+    }
+    .table_area{
+        width: 90%;
+    }
+    .create_modal, .update_modal{
+        top: 55%;
+        width: 80%;
+    }
+    .create_modal_contents span{
+        font-size: .9rem;
+    }
+    .create_modal_contents input{
+        font-size: .8rem;
+    }
+}
+@media (max-width: 480px) {
+    .announcement_list{
+        font-size: .65rem;
+    }
+    .announcement_h1{
+        font-size: 1.4rem;
+    }   
+    .create_modal, .update_modal{
+        width: 85%;
+    }
+    .create_modal_contents span{
+        font-size: .8rem;
+    }
+    .create_modal_contents input{
+        font-size: .7rem;
+    }
+    .contents_btn, .create_btn{
+        font-size: .7rem;
+    }
+}
+@media (max-width: 400px) {
+    .announcement_list{
+        font-size: .5rem;
+    }
+    .announcement_h1{
+        font-size: 1.3rem;
+    }   
+    .create_modal, .update_modal{
+        width: 90%;
+        height: 650px;
+    }
+    .create_modal_contents span{
+        font-size: .7rem;
+    }
+    .create_modal_contents input{
+        font-size: .5rem;
+    }
 }

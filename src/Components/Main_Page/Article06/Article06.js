@@ -51,8 +51,8 @@ function Article06() {
                                     <div className='Article06_box'>
                                         <div className='Article06_img'>
                                             <img src={item.img[`img0${id + 1}`]} alt='이미지'/>
-                                            <p>{item.Title}</p>
                                         </div>
+                                        <p>{item.Title}</p>
                                     </div>
                                 </a>
                             </li>

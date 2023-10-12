@@ -3,10 +3,10 @@
 .footer{
     font-family: 'Noto Sans KR', sans-serif;
     width: 100%;
-    /* height: 360px; */
     position: relative;
     bottom: 0;
     background-color: #f7f7f7;
+    margin-top: 400px;
 }
 
 .footer_top{
@@ -24,7 +24,7 @@
     display: flex;
     gap: 30px;
     line-height: 55px;
-    font-size: 1rem;
+    font-size: .8rem;
 
     /* display: none; */
 }
@@ -35,7 +35,7 @@
 .footer_select{
     position: relative;
     width: 13rem;
-    font-size: 1rem;
+    font-size: .8rem;
 }
 .footer_select_box{
     border: 1px solid rgb(175, 175, 175);
@@ -116,28 +116,28 @@
     margin-right: 20px;
 }
 .footer_info_big{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #666;
 }
 .footer_info_call{
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #666;
     font-weight: bold;
 }
 .call_icon{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 .footer_info_middle{
     display: flex;
     gap: 3px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #777;
 }
 .footer_info_small{
-    font-size: .8rem;
+    font-size: .7rem;
     color: #999;
 }
 .footer_info_btn{
@@ -151,7 +151,7 @@
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 24px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #666;
 }
 
@@ -159,7 +159,7 @@
     width: 80%;
     margin: 0 auto;
     color: #999;
-    font-size: .8rem;
+    font-size: .7rem;
     margin-bottom: 30px;
 }
 .footer_text_content{
@@ -174,4 +174,160 @@
 }
 .column_icon{
     transform: rotate(90deg);
+}
+
+
+@media (max-width: 1280px) {
+    .footer_info_btn{
+        padding: 11px;
+        font-size: .9rem;
+    }
+}
+@media (max-width: 1024px) {
+    .footer_header_text{
+        gap: 20px;
+        font-size: .8rem;
+    }
+    .footer_select{
+        width: 12rem;
+        font-size: .8rem;
+    }
+    .footer_select_hover{
+        width: 12rem;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: 1.2rem;
+    }
+    .call_icon{
+        font-size: .9rem;
+    }
+    .footer_info_middle{
+        gap: 3px;
+        font-size: .9rem;
+    }
+    .footer_info_small{
+        font-size: .5rem;
+    }
+    .footer_info_btn{
+        width: 95%;
+        font-size: .8rem;
+    }
+    .footer_text{
+        width: 80%;
+        font-size: .6rem;
+    }
+    .empty{
+        display: none;
+    }
+}
+@media (max-width: 780px) {
+    .footer_top{
+        height: 45px;
+    }
+    .footer_header_text{
+        gap: 10px;
+        line-height: 45px;
+        font-size: .65rem;
+    }
+    .footer_select{
+        width: 10rem;
+        font-size: .6rem;
+    }
+    .footer_select_hover{
+        width: 10rem;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: 1rem;
+    }
+    .call_icon{
+        font-size: .7rem;
+    }
+    .footer_info_middle{
+        font-size: .75rem;
+    }
+    .footer_info_small{
+        zoom: .9;
+    }
+    .footer_info_btn{
+        width: 100%;
+        font-size: .5rem;
+    }
+    .footer_text{
+        font-size: .5rem;
+        zoom: 0.8;
+    }
+    .footer_notice{
+        height: 120px;
+    }
+}
+@media (max-width: 480px) {
+    .footer_top{
+        height: 35px;
+    }
+    .footer_header_text{
+        gap: 5px;
+        line-height: 55px;
+        font-size: .5rem;
+        zoom: .7;
+    }
+    .footer_select{
+        width: 9rem;
+        font-size: .5rem;
+        zoom: .7;
+    }
+    .footer_select_hover{
+        width: 9rem;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: .65rem;
+    }
+    .call_icon{
+        font-size: .5rem;
+    }
+    .footer_info_middle{
+        font-size: .5rem;
+        zoom: .8;
+    }
+    .footer_info_small{
+        font-size: .5rem;
+        zoom: 0.6;
+    }
+    .footer_info_btn{
+        width: 100%;
+        font-size: .5rem;
+        zoom: .7;
+    }
+    .footer_text{
+        font-size: .5rem;
+        zoom: 0.5;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer_header_text{
+        line-height: 75px;
+        zoom: .5;
+    }
+    .footer_select{
+        zoom: .6;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: .5rem;
+        zoom: .9;
+    }
+    .call_icon{
+        zoom: .9;
+    }
+    .footer_info_middle{
+        zoom: .7;
+    }
+    .footer_info_small{
+        zoom: 0.5;
+    }
+    .footer_info_btn{
+        zoom: .55;
+    }
+    .footer_text{
+        zoom: 0.4;
+    }
 }
