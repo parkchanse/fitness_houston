@@ -10,7 +10,7 @@
 .con_box{
   width: 100%;
   max-width: 1280px;
-  padding: 100px 0px;
+  padding: 150px 0px 100px 0px;
   margin: 0 auto;
 }
 
@@ -83,16 +83,7 @@
   transform: translate(-50%, 0) rotate(-45deg);  
 }
 
-@media screen and (max-width: 1280px){
-  .con_box{
-    padding: 60px 0px;    
-  }
-}
-
-@media screen and (max-width: 760px){
-  .con_box{
-    padding: 50px 0px;    
-  }
+@media screen and (max-width: 760px){  
   .con_title_info{
     font-size: 2rem;
   }
@@ -113,5 +104,11 @@
   .con_simple_text > p:nth-child(5){
     font-size: 1.8rem;  
     font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 360px){
+  .con_box{
+    padding: 120px 0px 50px 0px;    
   }
 }

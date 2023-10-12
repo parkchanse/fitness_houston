@@ -35,7 +35,7 @@ function Article03() {
     }
     return (
         <div className='Article03'>
-            <h1>짐박스 시리즈</h1>
+            <h1>피트니스 휴스턴 시리즈</h1>
             <div className='Article03_Slider'>
                 <div className='Article03_Slider_Container' >
                     <ul className='Article03_Slide' ref={bannerRef}>
@@ -47,7 +47,7 @@ function Article03() {
                                         <a href='#'>
                                             <div className='Article03_box'>
                                                 <div className='Article03_img'>
-                                                <img src={item.img[`img0${id + 1}`]} alt="이미지박스" />
+                                                    <img src={item.img[`img0${id + 1}`]} alt="이미지박스" />
                                                 </div>
                                                 <div className='Article03_Textbox'>
                                                     <p>{item.Title}</p>

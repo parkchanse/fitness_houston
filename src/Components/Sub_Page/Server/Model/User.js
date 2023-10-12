@@ -28,6 +28,10 @@ const personSchema = new Schema({
         type: Boolean,
         required: true,
     },
+    login: {
+        type: Boolean,
+        default: false
+    },
     createdAt:{
         type: Date,
         default: Date.now,

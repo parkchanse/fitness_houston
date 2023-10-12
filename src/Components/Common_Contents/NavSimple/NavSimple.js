@@ -1,18 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import './Nav.css'
+import './NavSimple.css'
 // import { SlLogin } from "react-icons/sl";
 import { BiSolidUser } from "react-icons/bi";
 
-function Nav({hoverHeader}){
-    const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
-
-    useEffect(() => {
-        // 로컬 저장소에서 로그인했는지 확인
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
-        setLoggedIn(isLoggedIn)
-    }, [])
-
+function NavSimple({hoverHeader}){
     // eslint-disable-next-line
     const [hoverName, setHoverName] = useState("")  // 헤더의 요소중 하나를 선택했을때 Nav가 나오게 하는 부분
     const [choices, setChoices] = useState({
@@ -50,7 +42,7 @@ function Nav({hoverHeader}){
     }
     
     return(
-        <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
+        <div className={`no_hover_container opacity_show`}>
             <div onClick={changePage} className="header_showarea">
                 <p className="header_logo">
                     <Link to="/">Fitness<br/>Houston</Link>
@@ -63,13 +55,11 @@ function Nav({hoverHeader}){
                     <div choice="notice">소식</div>
                     <div choice="pt">PT</div>
                 </div>
-                <Link to="/login">                    
-                    {loggedIn ? null : (
-                        <div className="header_login">
-                            <BiSolidUser className="header_login_logo" />
-                            <p>로그인</p>
-                        </div>
-                    )}
+                <Link to="/login">
+                    <div className="header_login">
+                        <BiSolidUser className="header_login_logo"/>
+                        <p>로그인</p>
+                    </div>
                 </Link>
             </div>
             
@@ -115,4 +105,4 @@ function Nav({hoverHeader}){
         </div>
     )
 }
-export default Nav
+export default NavSimple
