@@ -5,6 +5,7 @@ import SearchID from './Info/SearchID'
 import SearchPW from './Info/SearchPW'
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import NavSimple from "../../Common_Contents/NavSimple/NavSimple"
 
 function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
@@ -52,7 +53,7 @@ function Login(){
           setUserId('')
           setPassword('')
           setLoginError('')  
-          window.location.href = '../../Main_Page/Main/Main.js'         
+          window.location.href = '/'         
         }else if(response.data.code === 400){
           console.log('로그인 실패')
           setLoginError('아이디나 비밀번호를 다시확인 하세요.')
@@ -72,6 +73,8 @@ function Login(){
   }
 
   return(
+    <>
+    <NavSimple />
     <div className="login">
       <div className="login_container">
         <div className="login_title">
@@ -134,6 +137,7 @@ function Login(){
         </div>
       )}      
     </div>
+    </>
   )
 }
 

@@ -180,4 +180,9 @@ router.delete('/:id',expressAsyncHandler(async (req, res, next) => {
   }
 }))
 
+router.get('/', async(req, res) => {  // 로그인 상태를 보내는 부분
+  const UserData = await User.find()
+  res.json(UserData)
+})
+
 module.exports = router
