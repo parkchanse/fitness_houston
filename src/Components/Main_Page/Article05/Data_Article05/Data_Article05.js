@@ -18,7 +18,7 @@ const Data_Article05 = [
     {
         id: 2,
         img: { img03 },
-        Title: "짐박스 멤버십"
+        Title: "피트니스 휴스턴 멤버십"
     },
 ]
 
