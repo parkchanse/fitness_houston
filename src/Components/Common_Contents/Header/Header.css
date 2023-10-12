@@ -4,9 +4,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    color: #c7c6c4;
-    /* color: #989898; */
-    /* color: #fff; */
+    color: #fff;
     font-size: 1.4rem;
     z-index: 999;
 }

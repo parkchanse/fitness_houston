@@ -9,7 +9,7 @@ function Article08() {
         <div className='Article08'>
             <a href='#' className='header'>
                     <img src={instagram} alt="인스타그램"/>
-                    <h1>#짐박스 Instagram</h1>
+                    <h1>#피트니스 휴스턴 Instagram</h1>
             </a>
             <div className='Article08_box'>
                 <div className='Article08_Container'>
@@ -19,7 +19,7 @@ function Article08() {
                                 className = 'Article08_li'
                             >
                                 <a href='#'>
-                                    <div>
+                                    <div className='Article08_img'>
                                         <img src={item.img[`img0${id + 1}`]} alt='이미지' />
                                     </div>
                                     <div className='Article08_titlebox'>

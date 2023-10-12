@@ -5,6 +5,7 @@ import SearchID from './Info/SearchID'
 import SearchPW from './Info/SearchPW'
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import NavSimple from "../../Common_Contents/NavSimple/NavSimple"
 
 function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
@@ -79,6 +80,8 @@ function Login(){
   }
 
   return(
+    <>
+    <NavSimple />
     <div className="login">
       <div className="login_container">
         <div className="login_title">
@@ -141,6 +144,7 @@ function Login(){
         </div>
       )}      
     </div>
+    </>
   )
 }
 

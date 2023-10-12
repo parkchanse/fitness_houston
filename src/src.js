@@ -9,10 +9,12 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 
-const corsOptions = {
-    origin: 'http://127.0.0.1:3000',
-    credentials: true
-}
+app.use(cors())
+// const corsOptions = {
+//     // origin: 'http://127.0.0.1:3000',
+//     origin: 'http://localhost:3000',
+//     credentials: true
+// }
 
 mongoose.connect('mongodb+srv://woody:vhrvnd17@woody.uugxmbw.mongodb.net/?retryWrites=true&w=majority')
     .then(() => console.log('몽고DB 연결완료!'))
@@ -21,7 +23,7 @@ mongoose.connect('mongodb+srv://woody:vhrvnd17@woody.uugxmbw.mongodb.net/?retryW
         // 적절한 에러 핸들링 수행
     })
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 app.use(express.json())
 app.use(logger('tiny'))
 app.use('/api/users', usersRouter)

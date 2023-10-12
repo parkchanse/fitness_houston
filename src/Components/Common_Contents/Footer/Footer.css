@@ -6,7 +6,8 @@
     position: relative;
     bottom: 0;
     background-color: #f7f7f7;
-    margin-top: 400px;
+    margin-top: 250px;
+    z-index: 0;
 }
 
 .footer_top{
@@ -135,6 +136,7 @@
     gap: 3px;
     font-size: 1rem;
     color: #777;
+    cursor: pointer;
 }
 .footer_info_small{
     font-size: .7rem;
@@ -176,110 +178,38 @@
     transform: rotate(90deg);
 }
 
-
-@media (max-width: 1280px) {
-    .footer_info_btn{
-        padding: 11px;
-        font-size: .9rem;
-    }
-}
-@media (max-width: 1024px) {
-    .footer_header_text{
-        gap: 20px;
-        font-size: .8rem;
-    }
-    .footer_select{
-        width: 12rem;
-        font-size: .8rem;
-    }
-    .footer_select_hover{
-        width: 12rem;
-    }
-    .footer_info_big, .footer_info_call{
-        font-size: 1.2rem;
-    }
-    .call_icon{
-        font-size: .9rem;
-    }
-    .footer_info_middle{
-        gap: 3px;
-        font-size: .9rem;
-    }
-    .footer_info_small{
-        font-size: .5rem;
-    }
-    .footer_info_btn{
-        width: 95%;
-        font-size: .8rem;
-    }
-    .footer_text{
-        width: 80%;
-        font-size: .6rem;
-    }
-    .empty{
+@media (min-width: 0px){
+    .footer{
         display: none;
     }
 }
-@media (max-width: 780px) {
-    .footer_top{
-        height: 45px;
+@media (min-width: 400px) {
+    .footer{
+        display: block;
     }
-    .footer_header_text{
-        gap: 10px;
-        line-height: 45px;
-        font-size: .65rem;
-    }
-    .footer_select{
-        width: 10rem;
-        font-size: .6rem;
-    }
-    .footer_select_hover{
-        width: 10rem;
-    }
-    .footer_info_big, .footer_info_call{
-        font-size: 1rem;
-    }
-    .call_icon{
-        font-size: .7rem;
-    }
-    .footer_info_middle{
-        font-size: .75rem;
-    }
-    .footer_info_small{
-        zoom: .9;
-    }
-    .footer_info_btn{
-        width: 100%;
-        font-size: .5rem;
-    }
-    .footer_text{
-        font-size: .5rem;
-        zoom: 0.8;
+    .footer_header{
+        width: 95%;
     }
     .footer_notice{
-        height: 120px;
+        width: 90%;
+        height: 100px;
+        gap: 10px;
     }
-}
-@media (max-width: 480px) {
     .footer_top{
-        height: 35px;
+        height: 40px;
     }
     .footer_header_text{
-        gap: 5px;
-        line-height: 55px;
+        line-height: 70px;
         font-size: .5rem;
-        zoom: .7;
+        gap: 15px;
+        zoom: .6;
     }
     .footer_select{
-        width: 9rem;
         font-size: .5rem;
-        zoom: .7;
-    }
-    .footer_select_hover{
-        width: 9rem;
+        zoom: .55;
     }
     .footer_info_big, .footer_info_call{
-        font-size: .65rem;
+        font-size: .5rem;
     }
     .call_icon{
         font-size: .5rem;
@@ -290,44 +220,166 @@
     }
     .footer_info_small{
         font-size: .5rem;
-        zoom: 0.6;
+        zoom: .6;
     }
     .footer_info_btn{
-        width: 100%;
         font-size: .5rem;
-        zoom: .7;
+        zoom: .65;
+        width: 100%;
     }
     .footer_text{
+        width: 90%;
         font-size: .5rem;
-        zoom: 0.5;
+        zoom: .45;
+    }
+    .footer_info:nth-child(1){
+        margin-right: 0px;
+    }
+    .empty{
+        display: none;
     }
 }
-
-@media (max-width: 400px) {
+@media (min-width: 480px) {
+    .footer_notice{
+        width: 90%;
+        height: 100px;
+        gap: 10px;
+    }
     .footer_header_text{
-        line-height: 75px;
-        zoom: .5;
+        line-height: 60px;
+        zoom: .7;
     }
     .footer_select{
         zoom: .6;
     }
     .footer_info_big, .footer_info_call{
-        font-size: .5rem;
-        zoom: .9;
+        font-size: .75rem;
     }
     .call_icon{
-        zoom: .9;
+        font-size: .55rem;
     }
     .footer_info_middle{
-        zoom: .7;
+        zoom: .9;
     }
     .footer_info_small{
-        zoom: 0.5;
+        zoom: .7;
     }
     .footer_info_btn{
-        zoom: .55;
+        zoom: .75;
     }
     .footer_text{
-        zoom: 0.4;
+        zoom: .5;
+    }
+}
+@media (min-width: 780px) {
+    .footer_header{
+        width: 80%;
+    }
+    .footer_notice{
+        width: 80%;
+        height: 150px;
+        gap: 10px;
+    }
+    .footer_top{
+        height: 55px;
+    }
+    .footer_header_text{
+        line-height: 55px;
+        font-size: .65rem;
+        gap: 15px;
+        zoom: 1;
+    }
+    .footer_select{
+        font-size: .5rem;
+        zoom: .75;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: .9rem;
+    }
+    .call_icon{
+        font-size: .7rem;
+    }
+    .footer_info_middle{
+        font-size: .65rem;
+        zoom: 1;
+    }
+    .footer_info_small{
+        font-size: .5rem;
+        zoom: .8;
+    }
+    .footer_info_btn{
+        font-size: .5rem;
+        zoom: .9;
+        width: 100%;
+    }
+    .footer_text{
+        width: 80%;
+        font-size: .5rem;
+        zoom: .6;
+    }
+    .footer_info:nth-child(1){
+        margin-right: 0px;
+    }
+    .empty{
+        display: block;
+    }
+}
+@media (min-width: 1024px) {
+    .footer_header_text{
+        font-size: .8rem;
+    }
+    .footer_select{
+        font-size: .5rem;
+        zoom: 1;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: 1.1rem;
+    }
+    .call_icon{
+        font-size: .8rem;
+    }
+    .footer_info_middle{
+        font-size: .8rem;
+    }
+    .footer_info_small{
+        font-size: .5rem;
+        zoom: 1;
+    }
+    .footer_info_btn{
+        font-size: .8rem;
+        zoom: 1;
+        width: 100%;
+    }
+    .footer_text{
+        font-size: .5rem;
+        zoom: .7;
+    }
+}
+@media (min-width: 1280px) {
+    .footer_header_text{
+        font-size: .9rem;
+    }
+    .footer_select{
+        font-size: .9rem;
+    }
+    .footer_info_big, .footer_info_call{
+        font-size: 1.3rem;
+    }
+    .call_icon{
+        font-size: 1rem;
+    }
+    .footer_info_middle{
+        font-size: 1rem;
+    }
+    .footer_info_small{
+        font-size: .7rem;
+    }
+    .footer_info_btn{
+        font-size: .9rem;
+        width: 85%;
+    }
+    .footer_text{
+        font-size: .5rem;
+        zoom: .9;
     }
 }
