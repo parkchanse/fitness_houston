@@ -149,7 +149,7 @@ function Register({ onClose }){
     }
   }
 
-  return (
+  return(
     <div className="register_form">
       <div className="register_close">
         <button onClick={onClose}>X</button>

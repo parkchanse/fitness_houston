@@ -1,6 +1,5 @@
 const express = require('express')
 const User = require('../Model/User')
-const expressAsyncHandler = require('express-async-handler')
 
 const router = express.Router()
 
@@ -138,22 +137,35 @@ router.post('/findPw', async(req, res, next) => {
   }
 })
 
+// 사용자 정보 조회
+router.get('/info', async(req, res, next) => {
+  try{
+    const user = await User.findById(req.params.userId)
+    if(!user){
+      return res.status(400).json({ ...CLIENT_ERROR, message: '사용자 정보 찾지 못함' })
+    }
+    res.json(user)
+  }catch(error){
+    console.error(error);
+    res.status(500).json({SERVER_ERROR})
+  }
+});
+
 // 로그아웃
 router.post('/logout', (req, res, next) => {
   res.json("로그아웃")
 })
 
 // 사용자 정보 변경
-router.put('/:id', expressAsyncHandler(async (req, res, next) => {
+router.put('/:userId', async(req, res, next) => {
   try{
     const user = await User.findById(req.params.id)
     if(!user){
-      res.status(404).json({ ...CLIENT_ERROR, message: '유저 찾지 못함' })
+      res.status(400).json({ ...CLIENT_ERROR, message: '유저 찾지 못함' })
     }else{
       user.name = req.body.name || user.name
       user.email = req.body.email || user.email
-      user.PW = req.body.PW || user.PW
-      user.isAdmin = req.body.isAdmin || user.isAdmin
+      user.password = req.body.password || user.password      
       user.lastModifiedAt = new Date()
 
       const updatedUser = await user.save()
@@ -164,20 +176,20 @@ router.put('/:id', expressAsyncHandler(async (req, res, next) => {
   }catch(error){
     res.status(500).json(SERVER_ERROR)
   }
-}))
+})
 
 // 사용자 정보 삭제
-router.delete('/:id',expressAsyncHandler(async (req, res, next) => {
+router.delete('/:userId', async(req, res, next) => {
   try{
     const user = await User.findByIdAndDelete(req.params.id)
     if(!user){
-      res.status(404).json({ ...CLIENT_ERROR, message: '유저 찾지 못함' })
+      res.status(400).json({ ...CLIENT_ERROR, message: '유저 찾지 못함' })
     }else{
-      res.status(204).json(SUCCESS)
+      res.status(200).json(SUCCESS)
     }
   }catch(error){
     res.status(500).json(SERVER_ERROR)
   }
-}))
+})
 
 module.exports = router
