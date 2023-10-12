@@ -11,6 +11,7 @@ function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
   const [IdSearchOpen, setIdSearchOpen] = useState(false)
   const [PwSearchOpen, setPwSearchOpen] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const [userId, setUserId] = useState('') //아이디 입력상태
   const [password, setPassword] = useState('') //비밀번호 입력상태
@@ -50,10 +51,16 @@ function Login(){
         console.log(response.data)
         if(response.data.code === 200){
           console.log('로그인 성공')
+          alert('로그인성공')
           setUserId('')
           setPassword('')
-          setLoginError('')  
-          window.location.href = '/'         
+          setLoginError('') 
+          setLoggedIn(true)
+
+          localStorage.setItem('isLoggedIn', 'true')
+          
+          window.location.href = 'http://localhost:3000/'  
+          window.history.pushState({}, document.title, 'http://localhost:3000/')               
         }else if(response.data.code === 400){
           console.log('로그인 실패')
           setLoginError('아이디나 비밀번호를 다시확인 하세요.')
@@ -67,7 +74,7 @@ function Login(){
 
   // 엔터 눌렀을 때 로그인
   const keyPress = (e) => {
-    if (e.key === 'Enter') {
+    if(e.key === 'Enter'){
       handleLogin()
     }
   }

@@ -6,6 +6,14 @@ import ScrollTop from "../ScrollTop/ScrollTop";
 import { BiSolidUser } from "react-icons/bi";
 
 function Header() {
+    const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
+
+    useEffect(() => {
+        // 로컬 저장소에서 로그인했는지 확인
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+        setLoggedIn(isLoggedIn)
+    }, [])
+
     const [hoverHeader, setHoverHeader] = useState(false)   // 기능 없는 헤더와 Nav와 연결된 기능이 있는 헤더를 구분하게 해주는 곳
     const [scrollTop, setScrollTop] = useState(true)
 
@@ -42,10 +50,12 @@ function Header() {
                     <div>소식</div>
                     <div>PT</div>
                 </div>
-                <div className="header_login">
-                    <BiSolidUser className="header_login_logo"/>
-                    <p>로그인</p>
-                </div>
+                {loggedIn ? null : (
+                        <div className="header_login">
+                            <BiSolidUser className="header_login_logo" />
+                            <p>로그인</p>
+                        </div>
+                )}                
             </div>
             <Nav hoverHeader={hoverHeader}></Nav>
             <ScrollTop />
