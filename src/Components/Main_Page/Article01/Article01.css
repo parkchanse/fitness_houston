@@ -39,3 +39,36 @@ a {
     border: 2px solid #000;
     transition: all ease-in-out 0.3s;
 }
+
+/* 반응형 웹 */
+
+@media (max-width: 1440px) {
+    .Article01_Container {
+        width: 100%;
+        margin: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .Article01_Icon { 
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .Icon_li {
+        border: 1px solid transparent;
+        width: 33%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .Icon_Img {
+        width: 140px;
+        height: 130px;
+    }
+
+}
