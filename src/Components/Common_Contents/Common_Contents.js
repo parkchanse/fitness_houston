@@ -1,12 +1,12 @@
 import Announcement from '../../Pages/Announcement/Announcement'
 import './Common_Contents.css'
 import Footer from './Footer/Footer'
-import Header from './Header/Header'
+import NavSimple from './NavSimple/NavSimple'
 
 function Common_Contents() {
     return (
         <div className='common'>
-            <Header />
+            <NavSimple />
             <Announcement />
             <Footer />
         </div>

@@ -16,6 +16,7 @@ function Announcement(){
     const [currentTitle, setCurrentTitle] = useState("")        // 현재 선택된 공지사항의 제목
     const [currentContent, setCurrentContent] = useState("")    // 현재 선택된 공지사항의 내용
     const [page, setPage] = useState(1)
+    const [isAdmin, setIsAdmin] = useState('')
     const itemsPerPage = 10 // 한 페이지당 아이템 수
     const authorFocus = useRef(null)
     const titleFocus = useRef(null)
@@ -173,14 +174,24 @@ function Announcement(){
         if(modal) {
             authorFocus.current.focus()
         }
-    }, [modal])
 
+        axios.get("http://localhost:5000/api/users")
+        .then((response) => {
+            const userData = response.data
+            setIsAdmin(userData.isAdmin)
+            console.log(userData.isAdmin)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, [modal])
+    
     return(
         <div className="announcement">
             <h1 className="announcement_h1">피트니스 휴스턴 공지사항</h1>
             <p className="announcement_p">피트니스 휴스턴의 공지사항을 알려드립니다.</p>
             <div className="table_area">
-                <button className="create_btn" onClick={() => toggleModal(true)}>글쓰기</button>
+                <button className={`create_btn ${isAdmin? 'hide': 'show'}`} onClick={() => toggleModal(true)}>글쓰기</button>
                 <table className="announcement_list">
                     <thead>
                         <tr>
@@ -206,8 +217,8 @@ function Announcement(){
                                 <td colSpan="5" className={`tbody_contents ${viewContents[announcement._id]? 'table_show': 'hide'}`}>
                                     <pre className="contents_pre">{announcement.contents}</pre>
                                     <div className="contents_btns">
-                                        <button className="contents_btn" onClick={() => openUpdateModal(announcement._id)}>수정</button>
-                                        <button className="contents_btn" onClick={() => deleteAnnouncement(announcement._id)}>삭제</button>
+                                        <button className={`contents_btn ${isAdmin? 'hide': 'show'}`} onClick={() => openUpdateModal(announcement._id)}>수정</button>
+                                        <button className={`contents_btn ${isAdmin? 'hide': 'show'}`} onClick={() => deleteAnnouncement(announcement._id)}>삭제</button>
                                     </div>
                                 </td>
                             </tr>

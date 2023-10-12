@@ -107,14 +107,13 @@ function Register({ onClose }){
         }
         
         const response = await axios.post('/api/users/register', userData)        
-        if(response.data.code === 200){          
-          console.log('가입 성공')
+        if(response.data.code === 400){
+          console.log(response.data.message)
+          setEmailError('이미 사용 중인 이메일입니다.')        
+        }else if(response.status === 200){
+          console.log('가입 성공:', response.data.message)
           onClose()
-          window.location.href = '../../../Main_Page/Main_Page.js'; 
-        }else if(response.data.code === 400){
-          setEmailError('이미 사용 중인 이메일입니다.')
-        }else{          
-          console.error('가입 실패:', response.data.message)
+          // window.location.href = '../Login.js' 
         }
       }catch(error){        
         console.error('에러 발생:', error)        
