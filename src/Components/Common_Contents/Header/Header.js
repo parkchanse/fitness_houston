@@ -29,6 +29,10 @@ function Header() {
 
     useEffect(() => {
         window.addEventListener('scroll', scrollTopStyle)
+
+        // 로컬 저장소에서 로그인했는지 확인
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+        setLoggedIn(isLoggedIn)
     }, [])
     
     return(

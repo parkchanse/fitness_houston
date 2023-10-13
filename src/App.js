@@ -7,8 +7,8 @@ import Main_Page from './Components/Main_Page/Main_Page';
 import Common_Contents from './Components/Common_Contents/Common_Contents'
 import Sub_Page from './Components/Sub_Page/Sub_Page'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ScrollTop from './Components/Common_Contents/ScrollTop/ScrollTop';
 import Login from './Components/Sub_Page/Login/Login';
+import Map from './Components/Common_Contents/Map/Map';
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
           <Route path="sub" element={<Sub_Page />} />
           <Route path="announcement" element={<Common_Contents />} />
           <Route path="login" element={<Login />} />
+          <Route path="map" element={<Map />} />
         </Routes>
       </BrowserRouter>
     </div>
