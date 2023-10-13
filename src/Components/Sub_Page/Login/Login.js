@@ -4,19 +4,14 @@ import Register from "./Info/Register"
 import SearchID from './Info/SearchID'
 import SearchPW from './Info/SearchPW'
 import axios from 'axios'
-import { Link } from "react-router-dom";
-import NavSimple from "../../Common_Contents/NavSimple/NavSimple"
+import { Link } from "react-router-dom"
 
 function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
   const [IdSearchOpen, setIdSearchOpen] = useState(false)
   const [PwSearchOpen, setPwSearchOpen] = useState(false)
-<<<<<<< HEAD
-  // eslint-disable-next-line
-=======
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
-  const [loggedIn, setLoggedIn] = useState(false)
-
+  // const [loggedIn, setLoggedIn] = useState(false) //로그인상태
+  
   const [userId, setUserId] = useState('') //아이디 입력상태
   const [password, setPassword] = useState('') //비밀번호 입력상태
   const [loginError, setLoginError] = useState('') //로그인 오류메세지상태
@@ -42,11 +37,7 @@ function Login(){
     setIdSearchOpen(false)
     setPwSearchOpen(false)
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
   //로그인 버튼 클릭시 로그인
   const handleLogin = async () => {
     try{
@@ -54,33 +45,21 @@ function Login(){
         setLoginError('아이디나 비밀번호를 입력하세요.')
       }else{
         const response = await axios.post('/api/users/login', {
-<<<<<<< HEAD
-          userId, password
-=======
           userId, password,
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
         })
         console.log(response.data)
         if(response.data.code === 200){
           console.log('로그인 성공')
-          alert('로그인성공')
-<<<<<<< HEAD
-          // setUserId('')
-          // setPassword('')
-=======
-          setUserId('')
-          setPassword('')
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
+          alert('로그인성공')         
           setLoginError('') 
-          setLoggedIn(true)
+          // setLoggedIn(true)
 
-          localStorage.setItem('isLoggedIn', 'true')
-<<<<<<< HEAD
+          const {name, email} = response.data.user
+          localStorage.setItem('isLoggedIn', 'true') 
+          localStorage.setItem('name', name)          
           localStorage.setItem('userId', userId)
           localStorage.setItem('password', password)
-          localStorage.setItem('isAdmin', response.data.user.isAdmin)
-=======
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
+          localStorage.setItem('email', email)       
           
           window.location.href = 'http://localhost:3000/'  
           window.history.pushState({}, document.title, 'http://localhost:3000/')               
@@ -103,8 +82,6 @@ function Login(){
   }
 
   return(
-    <>
-    <NavSimple />
     <div className="login">
       <div className="login_container">
         <div className="login_title">
@@ -167,7 +144,6 @@ function Login(){
         </div>
       )}      
     </div>
-    </>
   )
 }
 

@@ -31,7 +31,7 @@
   flex-direction: column;
 }
 .register_info label span{
-  font-size: .4rem;
+  font-size: .5rem;
   color: red;
 }
 .register_info input{
@@ -147,7 +147,7 @@
     right: 0;
     width: 3.5rem;
     height: 2rem;
-    font-size: .4rem;
+    font-size: .5rem;
     top: 10px;
   }
   .register_form form{

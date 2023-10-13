@@ -138,18 +138,19 @@ router.post('/findPw', async(req, res, next) => {
 })
 
 // 사용자 정보 조회
-router.get('/info', async(req, res, next) => {
+router.get('/info/:userId', async(req, res, next) => {
   try{
-    const user = await User.findById(req.params.userId)
+    const userId = req.params.userId
+    const user = await User.findOne({userId: userId})
     if(!user){
       return res.status(400).json({ ...CLIENT_ERROR, message: '사용자 정보 찾지 못함' })
     }
-    res.json(user)
+    res.json({code: 200, user})
   }catch(error){
-    console.error(error);
+    console.error(error)
     res.status(500).json({SERVER_ERROR})
   }
-});
+})
 
 // 로그아웃
 router.post('/logout', (req, res, next) => {
@@ -159,7 +160,7 @@ router.post('/logout', (req, res, next) => {
 // 사용자 정보 변경
 router.put('/:userId', async(req, res, next) => {
   try{
-    const user = await User.findById(req.params.id)
+    const user = await User.findById(req.params.userId)
     if(!user){
       res.status(400).json({ ...CLIENT_ERROR, message: '유저 찾지 못함' })
     }else{
@@ -181,7 +182,7 @@ router.put('/:userId', async(req, res, next) => {
 // 사용자 정보 삭제
 router.delete('/:userId', async(req, res, next) => {
   try{
-    const user = await User.findByIdAndDelete(req.params.id)
+    const user = await User.findByIdAndDelete(req.params.userId)
     if(!user){
       res.status(400).json({ ...CLIENT_ERROR, message: '유저 찾지 못함' })
     }else{
@@ -190,11 +191,6 @@ router.delete('/:userId', async(req, res, next) => {
   }catch(error){
     res.status(500).json(SERVER_ERROR)
   }
-})
-
-router.get('/', async(req, res) => {  // 로그인 상태를 보내는 부분
-  const UserData = await User.find()
-  res.json(UserData)
 })
 
 module.exports = router

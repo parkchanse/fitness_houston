@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import './Information.css'
 import axios from 'axios'
 
-function Information({ onClose }) {
+function Information({ onClose, userId}) {
   const [name, setName] = useState("")
   const [id, setId] = useState("")
   const [password1, setPassword1] = useState("") 
@@ -16,24 +16,31 @@ function Information({ onClose }) {
   const [passwordError, setPasswordError] = useState("")
   const [emailError, setEmailError] = useState("")
   const [idTestMessage, setIdTestMessage] = useState("")
+  const [loginId, setLoginId] = useState("")
+
+  const [isModalOpen, setIsModalOpen] = useState(true)
 
   useEffect(() => {
+    const loginId = localStorage.getItem('userId')
+    setLoginId(loginId)
     // 데이터 가져옴
-    fetchUserData()
-  }, [])
+    fetchUserData(loginId)    
+  }, [loginId])  
 
   // 사용자 정보 조회
-  const fetchUserData = async () => {
+  const fetchUserData = async(userId) => {
     try{
-      const response = await axios.get('/api/users/info')
-      if (response.status === 200){
+      const response = await axios.get(`/api/users/info/${userId}`)
+      if(response.data.code === 200){
         const user = response.data.user
         setName(user.name)
         setId(user.userId)
         setPassword1(user.password)
         setEmail(user.email)
         setUserData(user)
-      }else{
+        
+        localStorage.setItem('user', JSON.stringify(user))
+      }else if(response.data.code === 400){
         console.error('조회 에러:', response.data.message)
       }
     }catch(error){
@@ -125,7 +132,7 @@ function Information({ onClose }) {
     return isValid
   }
 
-  const handleUpdate = async () => {
+  const handleUpdate = async() => {
     if(validateForm()){
       try{
         const updatedUserData = {
@@ -137,8 +144,7 @@ function Information({ onClose }) {
 
         const response = await axios.put(`/api/users/${userData._id}`, updatedUserData)
         if(response.status === 200){
-          console.log('정보가 성공적으로 업데이트되었습니다.')
-          onClose()
+          console.log('정보가 성공적으로 업데이트되었습니다.')          
         }else{
           console.error('정보 업데이트 실패:', response.data.message)
         }
@@ -148,13 +154,12 @@ function Information({ onClose }) {
     }
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async() => {
     try{
       const response = await axios.delete(`/api/users/${userData._id}`)
 
       if(response.status === 200){
-        console.log('계정이 성공적으로 삭제되었습니다.')
-        onClose()
+        console.log('계정이 성공적으로 삭제되었습니다.')        
       }else{
         console.error('계정 삭제 실패:', response.data.message)
       }
@@ -162,13 +167,17 @@ function Information({ onClose }) {
       console.error('에러 발생:', error)
     }
   }
-
+  
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
   return(
-    <div className="info_container">
+    isModalOpen && (
+      <div className="info_container">
       <div className="info_modal">
         <div className="info_form">
           <div className="info_close">
-            <button onClick={onClose}>X</button>
+            <button onClick={closeModal}>X</button>
           </div>
           <div className="info_title">
             <h2>회원정보 수정</h2>
@@ -236,6 +245,7 @@ function Information({ onClose }) {
       </div>
     </div>
   )
+    )
 }
 
 export default Information
