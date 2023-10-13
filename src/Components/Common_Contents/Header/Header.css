@@ -94,6 +94,7 @@
         width: 95%;
         font-size: 1.2rem;
   }
+}
 @media (max-width: 493px) {
     .header_showarea{
         font-size: 1rem;
