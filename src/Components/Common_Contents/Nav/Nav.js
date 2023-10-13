@@ -43,6 +43,12 @@ function Nav({hoverHeader}){
             left: 0,
         })
     }
+
+    useEffect(() => {
+        // 로컬 저장소에서 로그인했는지 확인
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+        setLoggedIn(isLoggedIn)
+    }, [])
     
     return(
         <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
