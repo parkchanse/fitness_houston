@@ -9,6 +9,7 @@ import Sub_Page from './Components/Sub_Page/Sub_Page'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Components/Sub_Page/Login/Login';
 import Map from './Components/Common_Contents/Map/Map';
+import Information from './Components/Sub_Page/Login/Information'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="sub" element={<Sub_Page />} />
           <Route path="announcement" element={<Common_Contents />} />
           <Route path="login" element={<Login />} />
+          <Route path="information" element={<Information />} />
           <Route path="map" element={<Map />} />
         </Routes>
       </BrowserRouter>
