@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import './NavSimple.css'
@@ -6,6 +7,7 @@ import { BiSolidUser, BiUserCircle } from "react-icons/bi";
 
 function NavSimple({hoverHeader}){
     const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
+
     // eslint-disable-next-line
     const [hoverName, setHoverName] = useState("")  // 헤더의 요소중 하나를 선택했을때 Nav가 나오게 하는 부분
     const [choices, setChoices] = useState({
@@ -41,12 +43,6 @@ function NavSimple({hoverHeader}){
             left: 0,
         })
     }
-
-    useEffect(() => {
-        // 로컬 저장소에서 로그인했는지 확인
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
-        setLoggedIn(isLoggedIn)
-    }, [])
     
     return(
         <div className={`no_hover_container opacity_show`}>

@@ -39,7 +39,6 @@ function Login(){
     setIdSearchOpen(false)
     setPwSearchOpen(false)
   }
-  
   //로그인 버튼 클릭시 로그인
   const handleLogin = async () => {
     try{
@@ -62,6 +61,7 @@ function Login(){
           localStorage.setItem('userId', userId)
           localStorage.setItem('password', password)
           localStorage.setItem('isAdmin', response.data.user.isAdmin)
+
           
           window.location.href = 'http://localhost:3000/'  
           window.history.pushState({}, document.title, 'http://localhost:3000/')               
