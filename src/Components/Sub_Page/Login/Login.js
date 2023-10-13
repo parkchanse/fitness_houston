@@ -11,6 +11,7 @@ function Login(){
   const [RegisterOpen, setRegisterOpen] = useState(false)
   const [IdSearchOpen, setIdSearchOpen] = useState(false)
   const [PwSearchOpen, setPwSearchOpen] = useState(false)
+  // eslint-disable-next-line
   const [loggedIn, setLoggedIn] = useState(false)
 
   const [userId, setUserId] = useState('') //아이디 입력상태
@@ -38,7 +39,6 @@ function Login(){
     setIdSearchOpen(false)
     setPwSearchOpen(false)
   }
-
   //로그인 버튼 클릭시 로그인
   const handleLogin = async () => {
     try{
@@ -46,18 +46,22 @@ function Login(){
         setLoginError('아이디나 비밀번호를 입력하세요.')
       }else{
         const response = await axios.post('/api/users/login', {
-          userId, password,
+          userId, password
         })
         console.log(response.data)
         if(response.data.code === 200){
           console.log('로그인 성공')
           alert('로그인성공')
-          setUserId('')
-          setPassword('')
+          // setUserId('')
+          // setPassword('')
           setLoginError('') 
           setLoggedIn(true)
 
           localStorage.setItem('isLoggedIn', 'true')
+          localStorage.setItem('userId', userId)
+          localStorage.setItem('password', password)
+          localStorage.setItem('isAdmin', response.data.user.isAdmin)
+
           
           window.location.href = 'http://localhost:3000/'  
           window.history.pushState({}, document.title, 'http://localhost:3000/')               

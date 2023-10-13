@@ -26,10 +26,10 @@
     border-top: 1px solid #efefef;
     /* border-bottom: 1px solid #efefef; */
 }
-.hide_section div{
+.hide_section li{
     cursor: pointer;
 }
-.hide_section div:hover, .hide_section a:hover{
+.hide_section li:hover, .hide_section a:hover{
     color: #676c75;
 }
 .hide_section a{
@@ -47,31 +47,6 @@
 
     gap: 35px;
 }
-
-.hover_contents{
-    display: flex;
-    cursor: pointer;
-    height: 100px;
-    align-items: center;
-    /* gap: 25px; */
-}
-.hover_contents div{
-    width: 4rem;
-    height: 100px;
-    line-height: 100px;
-    text-align: center;
-    border-bottom: 5px solid transparent;
-}
-.hover_contents div:nth-child(1){
-    width: 4.5rem;
-}
-.hover_contents div:nth-last-child(1){
-    width: 3rem;
-}
-.hover_contents div:hover{
-    border-bottom: 5px solid black;
-    color: gray;
-}
 .header_login{
     display: flex;
     flex-direction: column;
@@ -88,11 +63,31 @@
     .header_hide{
         font-size: .9rem;
     }
-    .hover_contents div:hover{
+
+    .hover_contents li:hover{
         border-bottom: none;
     }
-    .hover_contents div{
+    .hover_contents li{
         border-bottom: none;
+    }
+    .header_login{
+        font-size: .8rem;
+    }
+    .header_login_logo{
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 467px) {
+    .header_login{
+        font-size: .7rem;
+    }
+    .header_login_logo{
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 460px) {
+    .header_login{
+        font-size: .6rem;
     }
 }
 @media (max-width: 400px) {
@@ -103,7 +98,13 @@
         height: 35px;
         font-size: .7rem;
     }
-    .hover_contents div{
+    .hover_contents li{
         width: 3rem;
+    }
+    .header_login{
+        font-size: .5rem;
+    }
+    .header_login_logo{
+        font-size: .8rem;
     }
 }
