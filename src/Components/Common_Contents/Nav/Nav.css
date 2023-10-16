@@ -26,7 +26,6 @@
 .hide_section{
     border-bottom: 1px solid #efefef;
 }
-
 .hide_section li{
     cursor: pointer;
 }
@@ -56,7 +55,6 @@
     align-items: center;
     /* gap: 25px; */
 }
-
 .hover_contents li{
     width: 4rem;
     height: 100px;
@@ -64,16 +62,13 @@
     text-align: center;
     border-bottom: 5px solid transparent;
 }
-
 .hover_contents li:nth-child(1){
     width: 4.5rem;
 }
 .hover_contents li:nth-last-child(1){
     width: 3rem;
 }
-
 .hover_contents li:hover{
-
     border-bottom: 5px solid black;
     color: gray;
 }
@@ -102,11 +97,6 @@
     .header_hide{
         font-size: .9rem;
     }
-
-    .hover_contents li:hover{
-        border-bottom: none;
-    }
-
     .hover_contents li:hover{
         border-bottom: none;
     }

@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     color: black;
+
     font-size: 1.4rem;
     background-color: #fff;
     border-bottom: 1px solid #efefef;
@@ -25,7 +26,6 @@
     border-top: 1px solid #efefef;
     /* border-bottom: 1px solid #efefef; */
 }
-
 .hide_section li{
     cursor: pointer;
 }
@@ -48,11 +48,13 @@
     gap: 35px;
 }
 
+
 .header_login{
     display: flex;
     flex-direction: column;
     gap: 3px;
     font-size: 1rem;
+    cursor: pointer;
 }
 .header_login_logo{
     font-size: 1.5rem;
@@ -89,32 +91,6 @@
     .header_login{
         font-size: .6rem;
     }
-    .hover_contents li:hover{
-
-        border-bottom: none;
-    }
-    .hover_contents li{
-        border-bottom: none;
-    }
-    .header_login{
-        font-size: .8rem;
-    }
-    .header_login_logo{
-        font-size: 1.2rem;
-    }
-}
-@media (max-width: 467px) {
-    .header_login{
-        font-size: .7rem;
-    }
-    .header_login_logo{
-        font-size: 1.2rem;
-    }
-}
-@media (max-width: 460px) {
-    .header_login{
-        font-size: .6rem;
-    }
 }
 @media (max-width: 400px) {
     .hover_contents{
@@ -123,16 +99,6 @@
     .header_hide{
         height: 35px;
         font-size: .7rem;
-    }
-
-    .hover_contents li{
-        width: 3rem;
-    }
-    .header_login{
-        font-size: .5rem;
-    }
-    .header_login_logo{
-        font-size: .8rem;
     }
     .hover_contents li{
         width: 3rem;

@@ -23,6 +23,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="condition" element={<Condition />}/>
           <Route path="map" element={<Map />}/>
+
         </Routes>
       </BrowserRouter>
     </div>
