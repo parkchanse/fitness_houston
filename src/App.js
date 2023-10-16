@@ -15,7 +15,7 @@ import Condition from './Components/Sub_Page/Login/Condition';
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Main_Page />} />
           <Route path="sub" element={<Sub_Page />} />
