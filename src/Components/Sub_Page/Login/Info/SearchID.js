@@ -19,7 +19,7 @@ function SearchID({ onClose }){
       setError("이름나 이메일을 확인하세요.")
     }else{
       try{        
-        const response = await axios.post('/api/users/findId', { 
+        const response = await axios.post('http://localhost:5000/api/users/findId', { 
           name, 
           email, 
         })

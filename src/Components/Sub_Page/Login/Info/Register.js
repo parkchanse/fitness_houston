@@ -106,7 +106,7 @@ function Register({ onClose }){
           agree,
         }
         
-        const response = await axios.post('/api/users/register', userData)        
+        const response = await axios.post('http://localhost:5000/api/users/register', userData)        
         if(response.data.code === 400){
           console.log(response.data.message)
           setEmailError('이미 사용 중인 이메일입니다.')        
@@ -129,7 +129,7 @@ function Register({ onClose }){
       return
     }
     try{
-      const response = await axios.post('/api/users/checkId', { userId: id })
+      const response = await axios.post('http://localhost:5000/api/users/checkId', { userId: id })
       if(response.status === 200){
         // 아이디 사용여부
         if(response.data.isAvailable){
@@ -156,17 +156,17 @@ function Register({ onClose }){
       </div>
       <h2>회원가입을 위해<br/>정보를 입력해주세요.</h2>
       <div className="register_info">
-        <label htmlFor='name'>* 이름 <br/>
+        <label htmlFor='name'>* 이름 
           <input
             type='text'
             id='name'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <span className="error">{nameError}</span><br/><br/>
+          <span className="error">{nameError}</span><br/>
         </label>
         <div className="register_id_check">
-          <label htmlFor='id'>* 아이디 <br/>
+          <label htmlFor='id'>* 아이디 
             <input
               type='text'
               id='id'
@@ -174,11 +174,11 @@ function Register({ onClose }){
               onChange={(e) => setId(e.target.value)}
             />
             <span className="error">{idTestMessage}</span>
-            <span className="error">{idError}</span><br/><br/>            
+            <span className="error">{idError}</span><br/>         
           </label>
           <button onClick={checkId}>중복확인</button>       
         </div>
-        <label htmlFor='password1'>* 비밀번호 <br/>
+        <label htmlFor='password1'>* 비밀번호 
           <input
             type='password'
             id='password1'
@@ -186,25 +186,25 @@ function Register({ onClose }){
             value={password1}
             onChange={(e) => setPassword1(e.target.value)}
           />
-          <span className="error">{passwordError}</span><br/><br/>
+          <span className="error">{passwordError}</span><br/>
         </label>
-        <label htmlFor='password2'>* 비밀번호 확인 <br/>
+        <label htmlFor='password2'>* 비밀번호 확인 
           <input
             type='password'
             id='password2'
             className="register_info_pw"
             value={password2}
             onChange={(e) => setPassword2(e.target.value)}
-          /><br/><br/>
+          /><br/>
         </label>
-        <label htmlFor='email'>* 이메일 <br/>
+        <label htmlFor='email'>* 이메일 
           <input
             type='text'
             id='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="error">{emailError}</span><br/><br/>
+          <span className="error">{emailError}</span><br/>
         </label>
       </div>
       <form>
@@ -216,7 +216,7 @@ function Register({ onClose }){
             onChange={() => setAgree(!agree)}
           /> <p>이용약관 개인정보 수집 및 정보이용에 동의합니다.</p>
         </label>
-        <span className="error">{agreeError}</span><br/><br/>
+        <span className="error">{agreeError}</span><br/>
       </form>
       <div className="register_btn">
         {IdDuplicated && (

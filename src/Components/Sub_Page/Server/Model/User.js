@@ -27,7 +27,11 @@ const personSchema = new Schema({
     agree: {
         type: Boolean,
         required: true,
-    },    
+    },
+    login: {
+        type: Boolean,
+        default: false
+    },
     createdAt:{
         type: Date,
         default: Date.now,

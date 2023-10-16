@@ -138,14 +138,14 @@ router.post('/findPw', async(req, res, next) => {
 })
 
 // 사용자 정보 조회
-router.get('/info/:userId', async(req, res, next) => {
+router.get('/:userId', async(req, res, next) => {
   try{
     const userId = req.params.userId
     const user = await User.findOne({userId: userId})
     if(!user){
       return res.status(400).json({ ...CLIENT_ERROR, message: '사용자 정보 찾지 못함' })
     }
-    res.json({code: 200, user})
+    res.json(user)
   }catch(error){
     console.error(error)
     res.status(500).json({SERVER_ERROR})
@@ -192,5 +192,30 @@ router.delete('/:userId', async(req, res, next) => {
     res.status(500).json(SERVER_ERROR)
   }
 })
+
+router.get('/:userId', async(req, res) => {  // 로그인 상태를 보내는 부분
+  const UserData = req.params.id
+  const UserID = await User.findById(UserData)
+  res.json(UserID)
+})
+router.get('/login', async(req, res) => {  // 로그인 상태를 보내는 부분
+  const UserData = req.params.id
+  const UserID = await User.findOne(UserData)
+  res.json(UserID)
+})
+router.get('/', async(req, res) => {  // 로그인 상태를 보내는 부분
+  const UserID = await User.findOne()
+  res.json(UserID)
+})
+
+router.get('/current', (req, res) => {
+  if (req.isAuthenticated()) { // 예: Passport.js를 사용한 인증
+    const currentUser = req.user; // 현재 로그인한 사용자 정보
+    res.json(currentUser);
+  } else {
+    res.status(401).json({ message: '로그인이 필요합니다' });
+  }
+});
+
 
 module.exports = router

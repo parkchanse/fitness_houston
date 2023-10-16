@@ -2,24 +2,10 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import './Nav.css'
 // import { SlLogin } from "react-icons/sl";
-<<<<<<< HEAD
 import { BiSolidUser, BiUserCircle } from "react-icons/bi";
 
 function Nav({hoverHeader}){
     const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
-=======
-import { BiSolidUser } from "react-icons/bi";
-
-function Nav({hoverHeader}){
-    const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
-
-    useEffect(() => {
-        // 로컬 저장소에서 로그인했는지 확인
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
-        setLoggedIn(isLoggedIn)
-    }, [])
-
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
     // eslint-disable-next-line
     const [hoverName, setHoverName] = useState("")  // 헤더의 요소중 하나를 선택했을때 Nav가 나오게 하는 부분
     const [choices, setChoices] = useState({
@@ -55,15 +41,12 @@ function Nav({hoverHeader}){
             left: 0,
         })
     }
-<<<<<<< HEAD
 
     useEffect(() => {
         // 로컬 저장소에서 로그인했는지 확인
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
         setLoggedIn(isLoggedIn)
     }, [])
-=======
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
     
     return(
         <div className={`hover_container ${hoverHeader? 'opacity_show': 'opacity_hide'}`}>
@@ -71,7 +54,6 @@ function Nav({hoverHeader}){
                 <p className="header_logo">
                     <Link to="/">Fitness<br/>Houston</Link>
                 </p>
-<<<<<<< HEAD
                 <ul className="hover_contents"
                 onMouseOver={choiceDiv}>
                     <li choice="brand">브랜드</li>
@@ -80,30 +62,13 @@ function Nav({hoverHeader}){
                     <li choice="notice">소식</li>
                     <li choice="pt">PT</li>
                 </ul>
-                <Link to={`${loggedIn? '/information' :'/login'}`}>                    
+                <Link to={`${loggedIn? '/condition' :'/login'}`}>                    
                     <div className="header_login">
                         <BiSolidUser className={`header_login_logo ${loggedIn? 'hide': 'show'}`} />
                         <p className={`${loggedIn? 'hide': 'show'}`}>로그인</p>
                         <BiUserCircle className={`header_login_logo ${loggedIn? 'show': 'hide'}`} />
                         <p className={`${loggedIn? 'show': 'hide'}`}>MyPage</p>
                     </div>
-=======
-                <div className="hover_contents"
-                onMouseOver={choiceDiv}>
-                    <div choice="brand">브랜드</div>
-                    <div choice="machine">머신</div>
-                    <div choice="shop">매장</div>
-                    <div choice="notice">소식</div>
-                    <div choice="pt">PT</div>
-                </div>
-                <Link to="/login">                    
-                    {loggedIn ? null : (
-                        <div className="header_login">
-                            <BiSolidUser className="header_login_logo" />
-                            <p>로그인</p>
-                        </div>
-                    )}
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
                 </Link>
             </div>
             
@@ -111,7 +76,6 @@ function Nav({hoverHeader}){
             onMouseOver={continueNav}
             onMouseOut={hideNav}
             >
-<<<<<<< HEAD
                 <ul className={`hide_section ${choices.brand? 'choice_show': 'display_hide'}`}>
                     <li>브랜드</li>
                     <li>BI</li>
@@ -148,42 +112,6 @@ function Nav({hoverHeader}){
                 <ul className={`hide_section ${choices.pt? 'choice_show': 'display_hide'}`}>
                     <li>상담안내</li>
                 </ul>
-=======
-                <div className={`hide_section ${choices.brand? 'choice_show': 'display_hide'}`}>
-                    <div>브랜드</div>
-                    <div>BI</div>
-                    <div>오시는 길</div>
-                </div>
-                <div className={`hide_section ${choices.machine? 'choice_show': 'display_hide'}`}>
-                    <div>
-                        <Link to="/sub">상체</Link>
-                    </div>
-                    <div>
-                        <Link to="/sub">하체</Link>
-                    </div>
-                </div>
-                <div className={`hide_section ${choices.shop? 'choice_show': 'display_hide'}`}>
-                    <div>매장찾기</div>
-                    <div>매장위치</div>
-                </div>
-                <div className={`hide_section ${choices.notice? 'choice_show': 'display_hide'}`}>
-                    <div onClick={changePage}>
-                        <Link to="/announcement">공지사항</Link>
-                    </div>
-                    <div onClick={changePage}>
-                        <Link to="/announcement">이벤트</Link>
-                    </div>
-                    <div onClick={changePage}>
-                        <Link to="/announcement">FAQ</Link>
-                    </div>
-                    <div onClick={changePage}>
-                        <Link to="/announcement">고객의 소리</Link>
-                    </div>
-                </div>
-                <div className={`hide_section ${choices.pt? 'choice_show': 'display_hide'}`}>
-                    <div>상담안내</div>
-                </div>
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
             </div>
         </div>
     )

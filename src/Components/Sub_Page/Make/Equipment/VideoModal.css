@@ -39,9 +39,6 @@
   .video_modal{
     width: 25rem; height: 20rem;
   }
-  .video_modal_content button{
-    font-size: 1rem;
-  }
   .video_modal_content iframe{
     width: 300px; height: 250px;
   }

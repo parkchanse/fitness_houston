@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import './Information.css'
 import axios from 'axios'
 
-function Information({ onClose, userId}) {
+function Information({ onClose }) {
   const [name, setName] = useState("")
   const [id, setId] = useState("")
   const [password1, setPassword1] = useState("") 
@@ -16,30 +16,30 @@ function Information({ onClose, userId}) {
   const [passwordError, setPasswordError] = useState("")
   const [emailError, setEmailError] = useState("")
   const [idTestMessage, setIdTestMessage] = useState("")
-  const [loginId, setLoginId] = useState("")
+  const [updateSuccess, setUpdateSuccess] = useState(false)
+  const [deleteSuccess, setDeleteSuccess] = useState(false)
 
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [loginId, setLoginId] = useState("")  
 
   useEffect(() => {
     const loginId = localStorage.getItem('userId')
     setLoginId(loginId)
     // 데이터 가져옴
-    fetchUserData(loginId)    
-  }, [loginId])  
+    fetchUserData(loginId) 
+  }, [loginId])
 
   // 사용자 정보 조회
   const fetchUserData = async(userId) => {
     try{
-      const response = await axios.get(`/api/users/info/${userId}`)
-      if(response.data.code === 200){
-        const user = response.data.user
+      const response = await axios.get(`http://localhost:5000/api/users/${userId}`)      
+      if(response.status === 200){
+        const user = response.data        
         setName(user.name)
         setId(user.userId)
         setPassword1(user.password)
         setEmail(user.email)
         setUserData(user)
         
-        localStorage.setItem('user', JSON.stringify(user))
       }else if(response.data.code === 400){
         console.error('조회 에러:', response.data.message)
       }
@@ -56,7 +56,7 @@ function Information({ onClose, userId}) {
       return
     }
     try{
-      const response = await axios.post('/api/users/checkId', { userId: id })
+      const response = await axios.post('http://localhost:5000/api/users/checkId', { userId: id })
       if(response.status === 200){
         // 아이디 사용여부
         if(response.data.isAvailable){
@@ -132,7 +132,7 @@ function Information({ onClose, userId}) {
     return isValid
   }
 
-  const handleUpdate = async() => {
+  const handleUpdate = async () => {
     if(validateForm()){
       try{
         const updatedUserData = {
@@ -142,9 +142,14 @@ function Information({ onClose, userId}) {
           email,
         }        
 
-        const response = await axios.put(`/api/users/${userData._id}`, updatedUserData)
+        const response = await axios.put(`http://localhost:5000/api/users/${userData._id}`, updatedUserData)
         if(response.status === 200){
-          console.log('정보가 성공적으로 업데이트되었습니다.')          
+          console.log('정보가 성공적으로 업데이트되었습니다.')
+          setUpdateSuccess(true) 
+          
+          setTimeout(() => {
+            setUpdateSuccess(false)
+          }, 3000)
         }else{
           console.error('정보 업데이트 실패:', response.data.message)
         }
@@ -154,46 +159,47 @@ function Information({ onClose, userId}) {
     }
   }
 
-  const handleDelete = async() => {
+  const handleDelete = async () => {
     try{
-      const response = await axios.delete(`/api/users/${userData._id}`)
+      const response = await axios.delete(`http://localhost:5000/api/users/${userData._id}`)
 
       if(response.status === 200){
-        console.log('계정이 성공적으로 삭제되었습니다.')        
+        console.log('계정이 성공적으로 삭제되었습니다.')
+        setDeleteSuccess(true)        
+
+        setTimeout(() => {
+          setDeleteSuccess(false)
+        }, 3000)
       }else{
         console.error('계정 삭제 실패:', response.data.message)
       }
     }catch(error){
       console.error('에러 발생:', error)
     }
-  }
-  
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
-  return(
-    isModalOpen && (
+  }  
+
+  return(    
       <div className="info_container">
       <div className="info_modal">
         <div className="info_form">
           <div className="info_close">
-            <button onClick={closeModal}>X</button>
+            <button onClick={onClose}>X</button>
           </div>
           <div className="info_title">
             <h2>회원정보 수정</h2>
           </div>          
           <div className="info_change">
-            <label htmlFor='name'>* 이름 <br />
+            <label htmlFor='name'>* 이름 
               <input
                 type='text'
                 id='name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <span className="error">{nameError}</span><br /><br />
+              <span className="error">{nameError}</span><br />
             </label>
             <div className="info_id_check">
-              <label htmlFor='id'>* 아이디 <br />
+              <label htmlFor='id'>* 아이디 
                 <input
                   type='text'
                   id='id'
@@ -201,11 +207,11 @@ function Information({ onClose, userId}) {
                   onChange={(e) => setId(e.target.value)}
                 />
                 <span className="error">{idTestMessage}</span>
-                <span className="error">{idError}</span><br /><br />
+                <span className="error">{idError}</span><br />
               </label>
               <button onClick={checkId}>중복확인</button>
             </div>
-            <label htmlFor='password1'>* 비밀번호 <br/>
+            <label htmlFor='password1'>* 비밀번호 
               <input
                 type='password'
                 id='password1'
@@ -213,39 +219,44 @@ function Information({ onClose, userId}) {
                 value={password1}
                 onChange={(e) => setPassword1(e.target.value)}
               />
-              <span className="error">{passwordError}</span><br/><br/>
+              <span className="error">{passwordError}</span><br/>
             </label>
-            <label htmlFor='password2'>* 비밀번호 확인 <br/>
+            <label htmlFor='password2'>* 비밀번호 확인 
               <input
                 type='password'
                 id='password2'
                 className="register_info_pw"
                 value={password2}
                 onChange={(e) => setPassword2(e.target.value)}
-              /><br/><br/>
-            </label>
-            <label htmlFor='email'>* 이메일 <br />
+              />
+            </label><br />
+            <label htmlFor='email'>* 이메일 
               <input
                 type='text'
                 id='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <span className="error">{emailError}</span><br /><br />
+              <span className="error">{emailError}</span><br />
             </label>
           </div>
           <div className="info_btn">
             {IdDuplicated && (
               <span className="error">이미 사용 중인 아이디입니다.</span>
             )}<br />
+            {updateSuccess && (
+              <span className="success">회원정보 수정 완료</span>
+            )}<br/>
+            {deleteSuccess && (
+              <span className="success">회원정보 삭제 완료</span>
+            )}<br/>
             <button onClick={handleUpdate}>수정</button>
             <button onClick={handleDelete}>계정 삭제</button>
           </div>
         </div>  
       </div>
-    </div>
+    </div>       
   )
-    )
 }
 
 export default Information
