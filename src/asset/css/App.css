@@ -7,9 +7,6 @@
 
 
 body{
-  font-family: 'MICEGothic Bold';  
-}
-
-.App h1 {
-  font-weight: 400;
+  font-family: 'MICEGothic Bold';
+  position: relative;
 }
