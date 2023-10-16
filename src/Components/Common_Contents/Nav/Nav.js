@@ -2,12 +2,11 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import './Nav.css'
 // import { SlLogin } from "react-icons/sl";
-
 import { BiSolidUser, BiUserCircle } from "react-icons/bi";
+import Condition from "../../Sub_Page/Condition/Condition";
 
 function Nav({hoverHeader}){
     const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
-
     // eslint-disable-next-line
     const [hoverName, setHoverName] = useState("")  // 헤더의 요소중 하나를 선택했을때 Nav가 나오게 하는 부분
     const [choices, setChoices] = useState({
@@ -18,6 +17,8 @@ function Nav({hoverHeader}){
         pt: false
     })
     const [navControl, setNavControl] = useState(false) // Nav 표시 유무를 관리함
+    const [showCondition, setShowCondition] = useState(false)
+
     const choiceDiv = (e) => {
         const choice = e.target.getAttribute("choice")  // 해당 div의 choice 속성 값을 가져옴
         setHoverName(choice)
@@ -44,6 +45,10 @@ function Nav({hoverHeader}){
         })
     }
 
+    const viewCondition = () => {
+        setShowCondition(true)
+    }
+
     useEffect(() => {
         // 로컬 저장소에서 로그인했는지 확인
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
@@ -64,14 +69,15 @@ function Nav({hoverHeader}){
                     <li choice="notice">소식</li>
                     <li choice="pt">PT</li>
                 </ul>
-                <Link to={`${loggedIn? '/information' :'/login'}`}>                    
-                    <div className="header_login">
+                <div className="header_login">
+                    <Link to="/login">
                         <BiSolidUser className={`header_login_logo ${loggedIn? 'hide': 'show'}`} />
                         <p className={`${loggedIn? 'hide': 'show'}`}>로그인</p>
-                        <BiUserCircle className={`header_login_logo ${loggedIn? 'show': 'hide'}`} />
-                        <p className={`${loggedIn? 'show': 'hide'}`}>MyPage</p>
-                    </div>
-                </Link>
+                    </Link>
+                        <BiUserCircle onClick={viewCondition} className={`header_login_logo ${loggedIn? 'show': 'hide'}`} />
+                        <p onClick={viewCondition} className={`${loggedIn? 'show': 'hide'}`}>MyPage</p>
+                </div>
+                {showCondition && <Condition />}
             </div>
             
             <div className={`header_hide ${navControl? 'display_show': 'display_hide'}`}
@@ -81,9 +87,6 @@ function Nav({hoverHeader}){
                 <ul className={`hide_section ${choices.brand? 'choice_show': 'display_hide'}`}>
                     <li>브랜드</li>
                     <li>BI</li>
-                    <li>
-                        <Link to="/map">지점찾기</Link>
-                    </li>
                 </ul>
                 <ul className={`hide_section ${choices.machine? 'choice_show': 'display_hide'}`}>
                     <li>
@@ -94,8 +97,12 @@ function Nav({hoverHeader}){
                     </li>
                 </ul>
                 <ul className={`hide_section ${choices.shop? 'choice_show': 'display_hide'}`}>
-                    <li>매장찾기</li>
-                    <li>매장위치</li>
+                    <li>
+                        <Link to="/map">매장찾기</Link>
+                    </li>
+                    <li>
+                        <Link to="/map">매장위치</Link>
+                    </li>
                 </ul>
                 <ul className={`hide_section ${choices.notice? 'choice_show': 'display_hide'}`}>
                     <li onClick={changePage}>

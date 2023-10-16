@@ -3,14 +3,12 @@ import './Header.css'
 import Nav from "../Nav/Nav";
 import ScrollTop from "../ScrollTop/ScrollTop";
 // import { SlLogin } from "react-icons/sl";
-
 import { BiSolidUser, BiUserCircle } from "react-icons/bi";
 
 function Header() {
     const [hoverHeader, setHoverHeader] = useState(false)   // 기능 없는 헤더와 Nav와 연결된 기능이 있는 헤더를 구분하게 해주는 곳
     const [scrollTop, setScrollTop] = useState(true)
     const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
-
 
     const headerContentsHover = () => {
         setHoverHeader(true)

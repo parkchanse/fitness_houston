@@ -5,7 +5,6 @@ import ConBanner from "./Make/Banner/ConBanner";
 import Equipment from './Make/Equipment/Equipment'
 import Header from "../Common_Contents/Header/Header";
 import Footer from "../Common_Contents/Footer/Footer";
-import Information from '../Sub_Page/Login/Information'
 
 
 function Sub(){
@@ -15,9 +14,8 @@ function Sub(){
 
       <ConHead/>
       <ConBanner/>
-      <Equipment/>
-      {/* <Information/> */}
-
+      <Equipment/>    
+      
       <Footer />
     </div>
   )

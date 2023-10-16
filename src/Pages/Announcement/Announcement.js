@@ -171,6 +171,14 @@ function Announcement(){
             console.log(error)
         })
 
+
+        const isAdminValue = localStorage.getItem('isAdmin')    // login.js 에서 isAdmin 값 가져오기
+        // setIsAdmin(isAdminValue)
+        if (isAdminValue === 'true') {
+            setIsAdmin(true)
+        } else {
+            setIsAdmin(false)
+        }
         if(modal) {     // 글쓰기 모달을 띄우면서 자동으로 포커스 넣는 부분
             authorFocus.current.focus()
         }
