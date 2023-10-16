@@ -45,7 +45,7 @@ function Login(){
       if(userId === '' || password === ''){
         setLoginError('아이디나 비밀번호를 입력하세요.')
       }else{
-        const response = await axios.post('/api/users/login', {
+        const response = await axios.post('http://localhost:5000/api/users/login', {
           userId, password
         })
         console.log(response.data)
@@ -57,9 +57,12 @@ function Login(){
           setLoginError('') 
           setLoggedIn(true)
 
+          const {name, email} = response.data.user
+          
           localStorage.setItem('isLoggedIn', 'true')
-          localStorage.setItem('userId', userId)
-          localStorage.setItem('password', password)
+          localStorage.setItem('name', name)
+          localStorage.setItem('userId', userId)          
+          localStorage.setItem('email', email)
           localStorage.setItem('isAdmin', response.data.user.isAdmin)
 
           
@@ -71,7 +74,7 @@ function Login(){
         }
       }      
     }catch(error){
-      console.error(error)
+      // console.error(error)
       setLoginError('서버와 통신 중 에러')
     }
   }

@@ -70,8 +70,7 @@ function NavSimple({hoverHeader}){
                         <p className={`${loggedIn? 'show': 'hide'}`}>MyPage</p>
                     </div>
                 </Link>
-            </div>
-            
+            </div>            
             <div className={`header_hide ${navControl? 'display_show': 'display_hide'}`}
             onMouseOver={continueNav}
             onMouseOut={hideNav}

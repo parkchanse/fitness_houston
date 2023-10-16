@@ -39,6 +39,7 @@
     /* gap: 25px; */
 }
 
+
 .header_contents li{
 
     width: 4rem;
@@ -52,7 +53,9 @@
 .header_contents li:nth-last-child(1){
     width: 3rem;
 }
+
 .header_contents li:hover{
+
     border-bottom: 1px solid black;
 }
 
@@ -81,7 +84,6 @@
     margin: 0 auto;
 }
 
-
 .hide{
     display: none;
 }
@@ -100,6 +102,7 @@
         font-size: 1rem;
     }
 }
+
 @media (max-width: 480px) {
     .header_showarea{
         width: 95%;
@@ -112,6 +115,13 @@
         margin-top: 0px;
     }
 }
+
+@media (max-width: 493px) {
+    .header_showarea{
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 400px) {
     .header_container{
         height: 80px;

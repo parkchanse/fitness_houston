@@ -55,6 +55,13 @@ function Header() {
                     <BiUserCircle className={`header_login_logo ${loggedIn? 'show': 'hide'}`} />
                     <p className={`${loggedIn? 'show': 'hide'}`}>MyPage</p>
                 </div>
+                {loggedIn ? null : (
+                        <div className="header_login">
+                            <BiSolidUser className="header_login_logo" />
+                            <p>로그인</p>
+                        </div>
+                )}              
+
             </div>
             <Nav hoverHeader={hoverHeader}></Nav>
             <ScrollTop />
