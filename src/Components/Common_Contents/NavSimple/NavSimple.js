@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './NavSimple.css'
 // import { SlLogin } from "react-icons/sl";
 import { BiSolidUser, BiUserCircle } from "react-icons/bi";
-import Condition from "../../Sub_Page/Condition/Condition";
+import Condition from "../../Sub_Page/Login/Condition"
 
 function NavSimple(){
     const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태

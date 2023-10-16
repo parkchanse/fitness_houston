@@ -9,7 +9,7 @@ import Sub_Page from './Components/Sub_Page/Sub_Page'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Components/Sub_Page/Login/Login';
 import Map from './Components/Common_Contents/Map/Map'
-import Condition from './Components/Sub_Page/Condition/Condition';
+import Condition from './Components/Sub_Page/Login/Condition';
 
 
 function App() {
