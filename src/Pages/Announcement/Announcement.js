@@ -171,7 +171,7 @@ function Announcement(){
             console.log(error)
         })
 
-<<<<<<< HEAD
+
         if(modal) {     // 글쓰기 모달을 띄우면서 자동으로 포커스 넣는 부분
             authorFocus.current.focus()
         }
@@ -183,21 +183,17 @@ function Announcement(){
         } else {
             setIsAdmin(false)
         }
-=======
-        if(modal) {
+        if(modal) {     // 글쓰기 모달을 띄우면서 자동으로 포커스 넣는 부분
             authorFocus.current.focus()
         }
 
-        axios.get("http://localhost:5000/api/users")
-        .then((response) => {
-            const userData = response.data
-            setIsAdmin(userData.isAdmin)
-            console.log(userData.isAdmin)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
+        const isAdminValue = localStorage.getItem('isAdmin')    // login.js 에서 isAdmin 값 가져오기
+        // setIsAdmin(isAdminValue)
+        if (isAdminValue === 'true') {
+            setIsAdmin(true)
+        } else {
+            setIsAdmin(false)
+        }
     }, [modal])
     
     return(
@@ -205,11 +201,8 @@ function Announcement(){
             <h1 className="announcement_h1">피트니스 휴스턴 공지사항</h1>
             <p className="announcement_p">피트니스 휴스턴의 공지사항을 알려드립니다.</p>
             <div className="table_area">
-<<<<<<< HEAD
                 <button className={`create_btn ${isAdmin? 'show': 'hide'}`} onClick={() => toggleModal(true)}>글쓰기</button>
-=======
-                <button className={`create_btn ${isAdmin? 'hide': 'show'}`} onClick={() => toggleModal(true)}>글쓰기</button>
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
+
                 <table className="announcement_list">
                     <thead>
                         <tr>
@@ -235,13 +228,8 @@ function Announcement(){
                                 <td colSpan="5" className={`tbody_contents ${viewContents[announcement._id]? 'table_show': 'hide'}`}>
                                     <pre className="contents_pre">{announcement.contents}</pre>
                                     <div className="contents_btns">
-<<<<<<< HEAD
                                         <button className={`contents_btn ${isAdmin? 'show': 'hide'}`} onClick={() => openUpdateModal(announcement._id)}>수정</button>
                                         <button className={`contents_btn ${isAdmin? 'show': 'hide'}`} onClick={() => deleteAnnouncement(announcement._id)}>삭제</button>
-=======
-                                        <button className={`contents_btn ${isAdmin? 'hide': 'show'}`} onClick={() => openUpdateModal(announcement._id)}>수정</button>
-                                        <button className={`contents_btn ${isAdmin? 'hide': 'show'}`} onClick={() => deleteAnnouncement(announcement._id)}>삭제</button>
->>>>>>> d702c57d45cb4361e686a69244141206aaabad63
                                     </div>
                                 </td>
                             </tr>

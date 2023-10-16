@@ -58,6 +58,11 @@
 .location_info_li:hover{
     background-color: #efefef;
 }
+
+.location_info_li.selected{
+    background-color: #efefef;
+}
+
 .location_info_li:nth-child(1){
     margin-top: 20px
 }

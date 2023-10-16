@@ -10,6 +10,8 @@ function Map() {
     const [longitude, setLongitude] = useState(127.37767101949346)  // 경도 정보
     const [title, setTitle] = useState('본점 대전점')   // 지점 정보
     const [test, setTest] = useState('본점 대전점')   // 지점 정보
+    const [locationIndex, setLocationIndex] = useState(null)
+
 
     useEffect(() => {
         let container = document.getElementById("map")      // 지도를 담을 영역의 DOM 레퍼런스
@@ -62,10 +64,14 @@ function Map() {
                             <li 
                             key={index}
                             className="location_info_li"
+                            className={`location_info_li ${locationIndex === index? 'selected': ''}`}
+
                             onClick={() => {    // 지점 클릭시 해당 위도, 경도로 중심값 이동
                                 setTitle(data.title)
                                 setLatitude(data.lat)
                                 setLongitude(data.lng)
+                                setLocationIndex(index)     // 클릭된 위치를 선택
+
                             }}
                             >
                             {data.title}</li>

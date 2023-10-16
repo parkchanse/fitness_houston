@@ -50,7 +50,10 @@ function Login(){
         })
         console.log(response.data)
         if(response.data.code === 200){
-          console.log('로그인 성공')                    
+          console.log('로그인 성공')
+          alert('로그인성공')
+          // setUserId('')
+          // setPassword('')
           setLoginError('') 
           setLoggedIn(true)
 
