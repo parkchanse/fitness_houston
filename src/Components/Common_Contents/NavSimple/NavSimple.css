@@ -54,6 +54,7 @@
     flex-direction: column;
     gap: 3px;
     font-size: 1rem;
+    cursor: pointer;
 }
 .header_login_logo{
     font-size: 1.5rem;
