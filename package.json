@@ -43,7 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "homepage": "https://github.com/parkchanse/fitness_houston"
+    "homepage": "https://parkchanse.github.io/fitness_houston"
   },
   "eslintConfig": {
     "extends": [
