@@ -2,12 +2,10 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import './Nav.css'
 // import { SlLogin } from "react-icons/sl";
-
 import { BiSolidUser, BiUserCircle } from "react-icons/bi";
 
 function Nav({hoverHeader}){
     const [loggedIn, setLoggedIn] = useState(false) // 로그인 상태
-
     // eslint-disable-next-line
     const [hoverName, setHoverName] = useState("")  // 헤더의 요소중 하나를 선택했을때 Nav가 나오게 하는 부분
     const [choices, setChoices] = useState({
@@ -64,7 +62,7 @@ function Nav({hoverHeader}){
                     <li choice="notice">소식</li>
                     <li choice="pt">PT</li>
                 </ul>
-                <Link to={`${loggedIn? '/information' :'/login'}`}>                    
+                <Link to={`${loggedIn? '/condition' :'/login'}`}>                    
                     <div className="header_login">
                         <BiSolidUser className={`header_login_logo ${loggedIn? 'hide': 'show'}`} />
                         <p className={`${loggedIn? 'hide': 'show'}`}>로그인</p>
