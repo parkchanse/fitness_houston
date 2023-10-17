@@ -1,1 +1,0 @@
-export { default as announcement } from './Announcement/Announcement'
