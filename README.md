@@ -78,7 +78,7 @@
 
 #### 프로젝트 정보에 관한 링크 
 
-[협업툴 - Notion링크](https://tasteful-ringer-50f.notion.site/e09a3cbddf444ee1b8ac2bbf8db06728?v=b593fe045d7041a38c1752bd18b63f05)
+[협업툴 - Notion링크](https://www.notion.so/wj402/382f5d5c86704a75b6d350b48a7d4a04?v=25ccd8f96fad4765b32ebade6546b113&pvs=4)
 
 #### 프로젝트 정보 링크에 대한 간략 설명
 ``팀원소개``
